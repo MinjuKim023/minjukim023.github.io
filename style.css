@@ -7,7 +7,7 @@
   --card-bg: #ffffff;
   --text: #111827;
   --muted: #6b7280;
-  --accent: #10b98f; /* <--- change this to your favorite color */
+  --accent: #10aeb9; /* <--- change this to your favorite color */
   --border: #e5e7eb;
   --shadow-soft: 0 16px 35px rgba(15, 23, 42, 0.15);
 }
@@ -19,7 +19,7 @@ html[data-theme="dark"] {
   --card-bg: #111827;
   --text: #e5e7eb;
   --muted: #9ca3af;
-  --accent: #10b98f; /* same accent in dark mode */
+  --accent: #10aeb9; /* same accent in dark mode */
   --border: #1f2937;
   --shadow-soft: 0 22px 45px rgba(0, 0, 0, 0.55);
 }
