@@ -1,14 +1,26 @@
+/* THEME VARIABLES  ------------------------------------------------------- */
+
+/* Light mode (default) */
 :root {
+  --bg: #f9fafb;
+  --bg-alt: #f3f4f6;
+  --card-bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --accent: #10b981; /* <--- change this to your favorite color */
+  --border: #e5e7eb;
+  --shadow-soft: 0 16px 35px rgba(15, 23, 42, 0.15);
+}
+
+/* Dark mode overrides */
+html[data-theme="dark"] {
   --bg: #050816;
   --bg-alt: #0b1020;
   --card-bg: #111827;
   --text: #e5e7eb;
   --muted: #9ca3af;
-  --accent: #60a5fa;
+  --accent: #10b981; /* same accent in dark mode */
   --border: #1f2937;
-  --radius-lg: 18px;
-  --radius-md: 12px;
-  --radius-pill: 999px;
   --shadow-soft: 0 22px 45px rgba(0, 0, 0, 0.55);
 }
 
@@ -29,14 +41,19 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Background changes with theme */
 body {
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: radial-gradient(circle at top, #111827, #020617 60%);
+  background: var(--bg);
   color: var(--text);
   line-height: 1.6;
 }
 
-/* Layout */
+html[data-theme="dark"] body {
+  background: radial-gradient(circle at top, #111827, #020617 60%);
+}
+
+/* LAYOUT  ------------------------------------------------------------ */
 
 .container {
   max-width: 1100px;
@@ -63,15 +80,15 @@ body {
   color: var(--muted);
 }
 
-/* Header / Nav */
+/* HEADER / NAV  ------------------------------------------------------- */
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(5, 8, 22, 0.95);
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(31, 41, 55, 0.85);
+  border-bottom: 1px solid var(--border);
 }
 
 .nav-container {
@@ -88,6 +105,12 @@ body {
   font-size: 0.9rem;
   text-decoration: none;
   color: var(--text);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .nav-links {
@@ -122,13 +145,37 @@ body {
   width: 100%;
 }
 
+/* theme toggle button */
+
+.theme-toggle {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0;
+  transition: background 0.15s ease, transform 0.08s ease, box-shadow 0.1s ease;
+}
+
+.theme-toggle:hover {
+  background: color-mix(in srgb, var(--bg-alt) 80%, transparent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-0.5px);
+}
+
 @media (max-width: 780px) {
   .nav-links {
-    display: none; /* simple mobile version */
+    display: none; /* keep nav simple on small screens */
   }
 }
 
-/* Hero */
+/* HERO  -------------------------------------------------------------- */
 
 .hero {
   padding-top: 5rem;
@@ -182,7 +229,7 @@ body {
   height: 230px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid rgba(148, 163, 184, 0.8);
+  border: 3px solid color-mix(in srgb, var(--border) 60%, transparent);
   box-shadow: var(--shadow-soft);
 }
 
@@ -201,14 +248,14 @@ body {
   }
 }
 
-/* Buttons */
+/* BUTTONS  ----------------------------------------------------------- */
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.65rem 1.25rem;
-  border-radius: var(--radius-pill);
+  border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 600;
   border: 1px solid transparent;
@@ -218,14 +265,14 @@ body {
 }
 
 .btn.primary {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 75%, black));
   color: #ffffff;
-  box-shadow: 0 16px 35px rgba(37, 99, 235, 0.6);
+  box-shadow: 0 16px 35px color-mix(in srgb, var(--accent) 40%, transparent);
 }
 
 .btn.primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 20px 45px rgba(37, 99, 235, 0.75);
+  box-shadow: 0 20px 45px color-mix(in srgb, var(--accent) 55%, transparent);
 }
 
 .btn.ghost {
@@ -235,10 +282,10 @@ body {
 }
 
 .btn.ghost:hover {
-  background: rgba(15, 23, 42, 0.9);
+  background: color-mix(in srgb, var(--bg-alt) 80%, transparent);
 }
 
-/* Cards */
+/* CARDS  ------------------------------------------------------------- */
 
 .cards {
   display: grid;
@@ -253,9 +300,13 @@ body {
 
 .card {
   background: var(--card-bg);
-  border-radius: var(--radius-lg);
+  border-radius: 18px;
   padding: 1.4rem;
-  border: 1px solid rgba(31, 41, 55, 0.95);
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme="dark"] .card {
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
 }
 
@@ -270,7 +321,7 @@ body {
   margin-bottom: 0.4rem;
 }
 
-/* About */
+/* ABOUT  ------------------------------------------------------------- */
 
 .about-grid {
   display: grid;
@@ -306,11 +357,11 @@ body {
   }
 }
 
-/* Timeline (Experience) */
+/* TIMELINE (EXPERIENCE)  -------------------------------------------- */
 
 .timeline {
   margin-top: 1.4rem;
-  border-left: 2px solid rgba(55, 65, 81, 0.9);
+  border-left: 2px solid var(--border);
   padding-left: 1.4rem;
 }
 
@@ -327,7 +378,7 @@ body {
   height: 12px;
   border-radius: 999px;
   background: var(--accent);
-  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.25);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent);
 }
 
 .timeline-content h3 {
@@ -345,10 +396,10 @@ body {
   color: var(--text);
 }
 
-/* Projects */
+/* PROJECTS  ---------------------------------------------------------- */
 
 .card-image-wrapper {
-  border-radius: var(--radius-md);
+  border-radius: 12px;
   overflow: hidden;
   position: relative;
   margin-bottom: 0.6rem;
@@ -363,7 +414,7 @@ body {
 
 .project-card-simple:hover .card-image-wrapper img {
   transform: scale(1.08);
-  filter: brightness(1.08);
+  filter: brightness(1.05);
 }
 
 .project-card-simple h3 {
@@ -385,7 +436,7 @@ body {
   text-decoration: underline;
 }
 
-/* Contact */
+/* CONTACT  ----------------------------------------------------------- */
 
 #contact p a {
   color: var(--accent);
@@ -396,12 +447,12 @@ body {
   text-decoration: underline;
 }
 
-/* Footer */
+/* FOOTER  ------------------------------------------------------------ */
 
 .site-footer {
-  border-top: 1px solid rgba(31, 41, 55, 0.9);
+  border-top: 1px solid var(--border);
   padding: 1rem 0 1.5rem;
-  background: #020617;
+  background: var(--bg-alt);
   font-size: 0.8rem;
   color: var(--muted);
   text-align: center;

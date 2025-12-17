@@ -20,27 +20,40 @@
   <body>
     <!-- HEADER / NAV -->
     <header class="site-header">
-      <div class="container nav-container">
+    <div class="container nav-container">
         <a href="#home" class="logo">Minju Kim</a>
+
+        <div class="nav-right">
         <nav class="nav-links">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#experience">Experience</a>
-          <a href="#education">Education</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-          <!-- Resume link goes to your existing Google Drive resume -->
-          <a
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <a
             href="https://drive.google.com/file/d/1VtZV4ETU5KibrUXBvr17Bgk2Mhgku9NU/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-          >
+            >
             Resume
-          </a>
+            </a>
         </nav>
-      </div>
+
+        <!-- theme toggle button -->
+        <button
+            class="theme-toggle"
+            id="theme-toggle"
+            type="button"
+            aria-label="Toggle dark mode"
+        >
+            🌙
+        </button>
+        </div>
+    </div>
     </header>
+
 
     <main>
       <!-- HERO / HOME -->
@@ -484,9 +497,37 @@
     </footer>
 
     <script>
-      // current year in footer
-      document.getElementById("year").textContent =
+    // footer year
+    document.getElementById("year").textContent =
         new Date().getFullYear().toString();
+
+    // theme toggle
+    (function () {
+        const root = document.documentElement;
+        const toggle = document.getElementById("theme-toggle");
+
+        if (!toggle) return;
+
+        function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        toggle.textContent = theme === "dark" ? "🌙" : "☀️";
+        }
+
+        // initial theme: stored value -> system preference -> light
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const initial = stored || (prefersDark ? "dark" : "light");
+        applyTheme(initial);
+
+        toggle.addEventListener("click", () => {
+        const current = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+        const next = current === "dark" ? "light" : "dark";
+        localStorage.setItem("theme", next);
+        applyTheme(next);
+        });
+    })();
     </script>
+
   </body>
 </html>
