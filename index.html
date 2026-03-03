@@ -41,9 +41,7 @@
     .sidebar-top { display: flex; flex-direction: column; align-items: flex-start; gap: 1.2rem; }
     .avatar {
       width: 88px; height: 88px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 55%, #000));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.8rem; font-weight: 800; color: #fff;
+      object-fit: cover; object-position: top;
       box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 15%, transparent),
                   0 8px 24px color-mix(in srgb, var(--accent) 30%, transparent);
     }
@@ -127,7 +125,7 @@
   <!-- === SIDEBAR === -->
   <aside class="sidebar">
     <div class="sidebar-top">
-      <div class="avatar">MK</div>
+      <img src="assets/profile.jpg" alt="Minju Kim" class="avatar"/>
       <div>
         <h1>Minju <span class="accent">Kim</span></h1>
         <p class="role">Research Data Analyst<br>MS Data Science · Indiana University</p>
@@ -166,7 +164,7 @@
       <p class="section-intro">Computer vision, scientific visualization, and applied data science.</p>
       <div class="proj-grid">
         <div class="project-card">
-          <div class="project-card-img" style="background:linear-gradient(135deg,#0d8a93,#14c8d4);"></div>
+          <img src="assets/algae.jpg" alt="Microscopic Algae Classification" class="project-card-img" style="object-fit:cover;"/>
           <div class="project-card-body"><p class="meta">#ComputerVision #WaterQuality</p><h3>Microscopic Algae Classification</h3><p>Classified algae images to support water quality analysis and environmental monitoring.</p></div>
           <div class="project-card-links"><a href="#">GitHub</a><a href="#">Read</a></div>
         </div>
@@ -176,7 +174,7 @@
           <div class="project-card-links"><a href="#">GitHub</a><a href="#">Read</a></div>
         </div>
         <div class="project-card">
-          <div class="project-card-img" style="background:linear-gradient(135deg,#667eea,#764ba2);"></div>
+          <iframe src="https://www.youtube.com/embed/jLIZHvMSCqg?playlist=jLIZHvMSCqg&rel=0&fs=0&autoplay=1&loop=1&mute=1" class="project-card-img" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display:block;"></iframe>
           <div class="project-card-body"><p class="meta">#Paraview #Sketchfab</p><h3>When Asteroids Strike: Deep Water Collisions</h3><p>Visualized asteroid collision scenarios with ParaView and spatial data.</p></div>
           <div class="project-card-links"><a href="#">Demo</a><a href="#">Read</a></div>
         </div>
