@@ -39,14 +39,24 @@
       box-shadow: 4px 0 30px rgba(0,0,0,0.4);
     }
     .sidebar-top { display: flex; flex-direction: column; align-items: flex-start; gap: 1.2rem; }
-    .avatar {
-      width: 88px; height: 88px; border-radius: 50%;
-      object-fit: cover; object-position: top;
-      box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 15%, transparent),
-                  0 8px 24px color-mix(in srgb, var(--accent) 30%, transparent);
+    /* Profile banner */
+    .profile-banner {
+      width: calc(100% + 4rem);
+      margin: -2.5rem -2rem 1.2rem;
+      position: relative; overflow: hidden;
     }
-    .sidebar h1 { font-size: 1.5rem; font-weight: 800; line-height: 1.2; }
-    .sidebar .role { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+    .profile-img {
+      width: 100%; height: 280px;
+      object-fit: cover; object-position: top center;
+      display: block;
+    }
+    .profile-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 2rem 1.5rem 1.1rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+    }
+    .profile-name { font-size: 1.45rem; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 0.2rem; }
+    .profile-role { font-size: 0.76rem; color: rgba(255,255,255,0.82); line-height: 1.5; }
     .accent { color: var(--accent); }
     .sidebar .bio { font-size: 0.82rem; color: var(--muted); line-height: 1.6; border-top: 1px solid var(--border); padding-top: 0.9rem; }
     .sidebar-nav { display: flex; flex-direction: column; gap: 0.3rem; border-top: 1px solid var(--border); padding-top: 1rem; }
@@ -114,9 +124,12 @@
 
     /* Responsive */
     @media (max-width: 860px) {
-      .sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); flex-direction: row; flex-wrap: wrap; gap: 1rem; padding: 1.2rem 1.5rem; }
+      .sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); padding: 0; }
+      .profile-banner { width: 100%; margin: 0 0 0; }
+      .profile-img { height: 220px; }
       .sidebar-top, .sidebar-btns, .sidebar-nav, .social-links { width: 100%; }
-      .avatar { width: 64px; height: 64px; font-size: 1.4rem; }
+      .sidebar-top { padding: 1.2rem 1.5rem; }
+      .sidebar-nav { padding: 0.8rem 1.5rem 1.2rem; border-top: 1px solid var(--border); }
       .main-content { margin-left: 0; }
     }
   </style>
@@ -124,12 +137,15 @@
 <body>
   <!-- === SIDEBAR === -->
   <aside class="sidebar">
-    <div class="sidebar-top">
-      <img src="assets/profile.jpg" alt="Minju Kim" class="avatar"/>
-      <div>
-        <h1>Minju <span class="accent">Kim</span></h1>
-        <p class="role">Research Data Analyst<br>MS Data Science · Indiana University</p>
+    <div class="profile-banner">
+      <img src="assets/profile.jpg" alt="Minju Kim" class="profile-img"/>
+      <div class="profile-overlay">
+        <p class="profile-name">Minju <span class="accent">Kim</span></p>
+        <p class="profile-role">Research Data Analyst · MS Data Science · Indiana University</p>
       </div>
+    </div>
+
+    <div class="sidebar-top">
       <p class="bio">I analyze infant visual experience data using computer vision, and build data-driven insights at the intersection of AI, research, and human development.</p>
       <div class="sidebar-btns">
         <a href="https://drive.google.com/file/d/1VtZV4ETU5KibrUXBvr17Bgk2Mhgku9NU/view?usp=sharing" class="btn btn-p" target="_blank">Download Resume</a>
