@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Minju Kim | Bento Grid Preview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #f9fafb; --bg-alt: #f3f4f6; --card-bg: #ffffff;
+      --text: #111827; --muted: #6b7280; --accent: #10aeb9;
+      --border: #e5e7eb; --shadow: 0 8px 24px rgba(15,23,42,0.1);
+    }
+    html[data-theme="dark"] {
+      --bg: #050816; --bg-alt: #0b1020; --card-bg: #111827;
+      --text: #e5e7eb; --muted: #9ca3af; --accent: #10aeb9;
+      --border: #1f2937; --shadow: 0 8px 24px rgba(0,0,0,0.55);
+    }
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Inter", system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    html[data-theme="dark"] body { background: radial-gradient(circle at top, #111827, #020617 60%); }
+
+    /* NAV */
+    .nav {
+      position: sticky; top: 0; z-index: 20;
+      background: color-mix(in srgb, var(--bg) 90%, transparent);
+      backdrop-filter: blur(16px); border-bottom: 1px solid var(--border);
+      padding: 0.55rem 1.5rem; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.82rem; text-decoration: none; color: var(--text); }
+    .nav-links { display: flex; gap: 1.1rem; font-size: 0.8rem; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--muted); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--text); }
+    .theme-toggle { width: 30px; height: 30px; border-radius: 999px; border: 1px solid var(--border); background: transparent; color: var(--text); cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
+    @media (max-width: 680px) { .nav-links { display: none; } }
+
+    /* BENTO GRID */
+    .bento {
+      padding: 1rem 1rem 0;
+      min-height: calc(100vh - 46px);
+      display: grid;
+      grid-template-columns: 240px 1fr 1fr 200px;
+      grid-template-rows: 1fr 1fr;
+      gap: 0.85rem;
+    }
+    .bc {
+      background: var(--card-bg); border-radius: 20px;
+      border: 1px solid var(--border); box-shadow: var(--shadow);
+      overflow: hidden; transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .bc:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(0,0,0,0.13); }
+    html[data-theme="dark"] .bc { box-shadow: 0 8px 24px rgba(0,0,0,0.6); }
+
+    /* Profile cell — spans 2 rows */
+    .cell-profile {
+      grid-column: 1; grid-row: 1 / 3;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; gap: 0.65rem; padding: 1.5rem;
+    }
+    .avatar {
+      width: 100px; height: 100px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 55%, #000));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; font-weight: 800; color: #fff;
+      border: 3px solid color-mix(in srgb, var(--accent) 35%, transparent);
+      box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 12%, transparent);
+    }
+    .cell-profile h1 { font-size: 1.15rem; font-weight: 700; }
+    .cell-profile .role { font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
+    .accent { color: var(--accent); }
+    .profile-btns { display: flex; flex-direction: column; gap: 0.4rem; width: 100%; margin-top: 0.2rem; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.42rem 0.9rem; border-radius: 999px; font-size: 0.74rem; font-weight: 600; text-decoration: none; transition: transform 0.08s, box-shadow 0.08s; border: none; cursor: pointer; }
+    .btn-p { background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 65%, #000)); color: #fff; box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 35%, transparent); }
+    .btn-p:hover { transform: translateY(-1px); }
+    .btn-g { border: 1px solid var(--border); color: var(--text); background: transparent; }
+    .btn-g:hover { background: var(--bg-alt); }
+
+    /* Featured project — spans 2 cols */
+    .cell-featured {
+      grid-column: 2 / 4; grid-row: 1;
+      position: relative; padding: 0;
+    }
+    .feat-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0d8a93, #10aeb9 50%, #14c8d4);
+    }
+    .feat-bg::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.1) 55%, transparent 100%);
+    }
+    .feat-content {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1.3rem; z-index: 1;
+    }
+    .tag { display: inline-block; background: rgba(255,255,255,0.18); backdrop-filter: blur(8px); color: #fff; font-size: 0.68rem; padding: 0.18rem 0.6rem; border-radius: 999px; margin-bottom: 0.4rem; }
+    .feat-content h3 { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; }
+    .feat-content p { font-size: 0.8rem; color: rgba(255,255,255,0.82); margin-bottom: 0.6rem; }
+    .feat-links a { display: inline-block; background: rgba(255,255,255,0.18); backdrop-filter: blur(8px); color: #fff; font-size: 0.72rem; padding: 0.28rem 0.75rem; border-radius: 999px; text-decoration: none; margin-right: 0.5rem; transition: background 0.15s; }
+    .feat-links a:hover { background: rgba(255,255,255,0.32); }
+
+    /* Skills cell — spans 2 rows */
+    .cell-skills {
+      grid-column: 4; grid-row: 1 / 3;
+      padding: 1.3rem; overflow-y: auto;
+    }
+    .cell-skills h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.5rem; margin-top: 0.8rem; }
+    .cell-skills h4:first-child { margin-top: 0; }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .chip { font-size: 0.68rem; font-weight: 500; padding: 0.22rem 0.65rem; border-radius: 999px; }
+    .chip-a { background: color-mix(in srgb, var(--accent) 13%, transparent); color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent); }
+    .chip-b { background: color-mix(in srgb, var(--muted) 10%, transparent); color: var(--muted); border: 1px solid var(--border); }
+    hr.divider { border: none; border-top: 1px solid var(--border); margin: 0.65rem 0; }
+
+    /* Small project cells */
+    .cell-proj { padding: 0; display: flex; flex-direction: column; }
+    .proj-thumb { height: 52%; flex-shrink: 0; }
+    .proj-body { padding: 0.85rem; flex: 1; }
+    .proj-body .meta { font-size: 0.68rem; color: var(--accent); margin-bottom: 0.2rem; }
+    .proj-body h3 { font-size: 0.83rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .proj-body p { font-size: 0.74rem; color: var(--muted); }
+    .proj-foot { padding: 0 0.85rem 0.85rem; display: flex; gap: 0.5rem; }
+    .proj-foot a { font-size: 0.72rem; color: var(--accent); text-decoration: none; }
+    .proj-foot a:hover { text-decoration: underline; }
+
+    /* SECTIONS BELOW */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    .section { padding: 3.5rem 0; }
+    .section-alt { background: var(--bg-alt); }
+    .section h2 { font-size: 1.75rem; margin-bottom: 0.75rem; }
+    .section-intro { color: var(--muted); max-width: 680px; margin-bottom: 1.5rem; font-size: 0.92rem; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.3rem; }
+    .card { background: var(--card-bg); border-radius: 16px; padding: 1.3rem; border: 1px solid var(--border); box-shadow: var(--shadow); }
+    .card h3 { margin-top: 0; font-size: 1rem; }
+    .card-meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.4rem; }
+    .project-card { background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; }
+    .project-card-img { height: 155px; width: 100%; }
+    .project-card-body { padding: 1rem; }
+    .project-card-body .meta { font-size: 0.7rem; color: var(--accent); margin-bottom: 0.2rem; }
+    .project-card-body h3 { font-size: 0.92rem; margin-bottom: 0.2rem; }
+    .project-card-body p { font-size: 0.8rem; color: var(--muted); }
+    .project-card-links { padding: 0 1rem 1rem; display: flex; gap: 0.75rem; }
+    .project-card-links a { font-size: 0.78rem; color: var(--accent); text-decoration: none; }
+    .project-card-links a:hover { text-decoration: underline; }
+    .timeline { border-left: 2px solid var(--border); padding-left: 1.4rem; margin-top: 1rem; }
+    .tl-item { position: relative; margin-bottom: 1.5rem; }
+    .tl-dot { position: absolute; left: -1.6rem; top: 0.3rem; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent); }
+    .tl-content h3 { margin: 0 0 0.12rem; font-size: 1rem; }
+    .tl-content ul { padding-left: 1rem; margin: 0.35rem 0 0; }
+    .tl-content li { font-size: 0.87rem; color: var(--text); }
+    #contact p a { color: var(--accent); text-decoration: none; }
+    #contact p a:hover { text-decoration: underline; }
+    .site-footer { border-top: 1px solid var(--border); padding: 1rem 0 1.5rem; background: var(--bg-alt); font-size: 0.78rem; color: var(--muted); text-align: center; }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .bento { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto; min-height: auto; padding-bottom: 0.85rem; }
+      .cell-profile { grid-column: 1 / 3; grid-row: auto; }
+      .cell-featured { grid-column: 1 / 3; grid-row: auto; min-height: 220px; }
+      .cell-skills { grid-column: 1 / 3; grid-row: auto; }
+    }
+    @media (max-width: 580px) {
+      .bento { grid-template-columns: 1fr; }
+      .cell-profile, .cell-featured, .cell-skills { grid-column: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a href="#" class="nav-logo">Minju Kim</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#projects">All Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="https://drive.google.com/file/d/1VtZV4ETU5KibrUXBvr17Bgk2Mhgku9NU/view?usp=sharing" target="_blank">Resume</a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </header>
+
+  <!-- ===== BENTO GRID ===== -->
+  <section class="bento">
+
+    <!-- PROFILE -->
+    <div class="bc cell-profile">
+      <div class="avatar">MK</div>
+      <h1>Minju Kim</h1>
+      <p class="role">Research Data Analyst<br><span class="accent">Cognitive Dev Lab · IU</span><br>MS Data Science</p>
+      <div class="profile-btns">
+        <a href="https://drive.google.com/file/d/1VtZV4ETU5KibrUXBvr17Bgk2Mhgku9NU/view?usp=sharing" class="btn btn-p" target="_blank">Download Resume</a>
+        <a href="#projects" class="btn btn-g">View All Projects</a>
+        <a href="#contact" class="btn btn-g">Contact Me</a>
+      </div>
+    </div>
+
+    <!-- FEATURED PROJECT -->
+    <div class="bc cell-featured">
+      <div class="feat-bg"></div>
+      <div class="feat-content">
+        <span class="tag">#ComputerVision</span>
+        <h3>Microscopic Algae Classification: Toward Enhancing Water Quality</h3>
+        <p>Classified algae microscopy images to support water quality analysis and environmental monitoring.</p>
+        <div class="feat-links"><a href="#">GitHub</a><a href="#">Read</a></div>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="bc cell-skills">
+      <h4>Languages</h4>
+      <div class="chips">
+        <span class="chip chip-a">Python</span><span class="chip chip-a">SQL</span>
+        <span class="chip chip-a">R</span><span class="chip chip-a">HTML/CSS</span>
+      </div>
+      <hr class="divider"/>
+      <h4>ML / AI</h4>
+      <div class="chips">
+        <span class="chip chip-a">PyTorch</span><span class="chip chip-a">TensorFlow</span>
+        <span class="chip chip-a">Scikit-learn</span><span class="chip chip-a">Pandas</span>
+        <span class="chip chip-a">NumPy</span>
+      </div>
+      <hr class="divider"/>
+      <h4>Tools</h4>
+      <div class="chips">
+        <span class="chip chip-b">Power BI</span><span class="chip chip-b">Tableau</span>
+        <span class="chip chip-b">MongoDB</span><span class="chip chip-b">Neo4j</span>
+        <span class="chip chip-b">ParaView</span><span class="chip chip-b">Snowflake</span>
+        <span class="chip chip-b">Cassandra</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="bc cell-proj">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#e53e3e,#f6ad55);"></div>
+      <div class="proj-body">
+        <p class="meta">#Ensemble #HeartAttack</p>
+        <h3>Bridging the Gender Gap in Heart Attack</h3>
+        <p>Ensemble models and feature importance for gender-related differences in risk.</p>
+      </div>
+      <div class="proj-foot"><a href="#">GitHub</a><a href="#">Read</a></div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="bc cell-proj">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#667eea,#764ba2);"></div>
+      <div class="proj-body">
+        <p class="meta">#Paraview #Spatial</p>
+        <h3>When Asteroids Strike: Deep Water Collisions</h3>
+        <p>Visualized deep water asteroid collision scenarios using ParaView.</p>
+      </div>
+      <div class="proj-foot"><a href="#">Demo</a><a href="#">Read</a></div>
+    </div>
+  </section>
+
+  <main>
+    <!-- ALL PROJECTS -->
+    <section id="projects" class="section section-alt">
+      <div class="container">
+        <h2>All Projects</h2>
+        <p class="section-intro">Computer vision, scientific visualization, and applied data science.</p>
+        <div class="cards">
+          <div class="project-card">
+            <div class="project-card-img" style="background:linear-gradient(135deg,#0d8a93,#14c8d4);"></div>
+            <div class="project-card-body"><p class="meta">#ComputerVision #WaterQuality</p><h3>Microscopic Algae Classification</h3><p>Classified algae images to support water quality analysis.</p></div>
+            <div class="project-card-links"><a href="#">GitHub</a><a href="#">Read</a></div>
+          </div>
+          <div class="project-card">
+            <div class="project-card-img" style="background:linear-gradient(135deg,#e53e3e,#f6ad55);"></div>
+            <div class="project-card-body"><p class="meta">#Ensemble #HeartAttack</p><h3>Bridging the Gender Gap in Heart Attack</h3><p>Ensemble models for gender-related heart attack risk differences.</p></div>
+            <div class="project-card-links"><a href="#">GitHub</a><a href="#">Read</a></div>
+          </div>
+          <div class="project-card">
+            <div class="project-card-img" style="background:linear-gradient(135deg,#667eea,#764ba2);"></div>
+            <div class="project-card-body"><p class="meta">#Paraview #Sketchfab</p><h3>When Asteroids Strike: Deep Water Collisions</h3><p>Visualized asteroid collision scenarios with ParaView and spatial data.</p></div>
+            <div class="project-card-links"><a href="#">Demo</a><a href="#">Read</a></div>
+          </div>
+          <div class="project-card">
+            <div class="project-card-img" style="background:linear-gradient(135deg,#38a169,#68d391);"></div>
+            <div class="project-card-body"><p class="meta">#ComputerVision #FeatureCongestion</p><h3>Natural Statistics of Infant Visual Experience</h3><p>Image statistics from infant head cameras across US & India.</p></div>
+            <div class="project-card-links"><a href="#">Read</a></div>
+          </div>
+          <div class="project-card">
+            <div class="project-card-img" style="background:linear-gradient(135deg,#ed8936,#ecc94b);"></div>
+            <div class="project-card-body"><p class="meta">#PowerBI #InfoViz</p><h3>Creating a Dashboard for Usage of the HRA</h3><p>Power BI dashboard for Health Risk Assessment usage patterns.</p></div>
+            <div class="project-card-links"><a href="#">Demo</a><a href="#">Read</a></div>
+          </div>
+          <div class="project-card">
+            <div class="project-card-img" style="background:linear-gradient(135deg,#3182ce,#63b3ed);"></div>
+            <div class="project-card-body"><p class="meta">#PDP #SHAP</p><h3>Predicting Telecom Customer Loyalty</h3><p>Loyalty prediction with PDP and SHAP model interpretation.</p></div>
+            <div class="project-card-links"><a href="#">GitHub</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <div class="container">
+        <h2>Experience</h2>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content">
+            <h3>Research Data Analyst</h3><p class="card-meta">Cognitive Development Lab, IU · May 2024 – Present</p>
+            <ul><li>EDA on 100,000 infant head camera images (US & India), investigating image statistics.</li><li>Applied GIST descriptors and feature congestion to assess visual clutter.</li></ul>
+          </div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content">
+            <h3>Graduate Teaching Assistant</h3><p class="card-meta">Luddy School of Informatics, IU · Jun 2024 – Jul 2024</p>
+            <ul><li>Taught Python, Arduino, HTML/CSS, Java, and EarSketch to 28 students.</li></ul>
+          </div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content">
+            <h3>Apple Siri Data Annotator</h3><p class="card-meta">BeyondTech · Seoul, Korea · May–Jun 2023</p>
+            <ul><li>Enhanced Siri's Korean capabilities by annotating 370+ data points daily.</li></ul>
+          </div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content">
+            <h3>Korean Marketing Intern</h3><p class="card-meta">Migung365 · Seoul, Korea · Jul–Aug 2020</p>
+            <ul><li>Led online diet challenge campaign and managed website community.</li></ul>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section section-alt">
+      <div class="container">
+        <h2>Education</h2>
+        <div class="cards">
+          <div class="card"><h3>Indiana University Bloomington</h3><p class="card-meta">Aug 2023 – Expected May 2025</p><p>Master of Science in Data Science – Applied Data Science</p><p><strong>CGPA:</strong> 3.769 / 4.0</p></div>
+          <div class="card"><h3>Konkuk University</h3><p class="card-meta">Seoul, Korea · Mar 2018 – Feb 2021</p><p>Bachelor of Business Administration</p><p><strong>CGPA:</strong> 3.72 / 4.5</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About Me</h2>
+        <p>Research Data Analyst at the Cognitive Development Lab, IU. Final semester MS Data Science student at the Luddy School of Informatics, Computing, and Engineering.</p>
+        <p style="margin-top:0.75rem;">My path started with Business Administration. A marketing internship in South Korea sparked my curiosity in AI and data-driven decisions, leading me to pursue a Master's in Data Science — focusing on Machine Learning, Computer Vision, NLP, and Scientific Visualization.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-alt">
+      <div class="container">
+        <h2>Get In Touch</h2>
+        <p>Always open to connecting about data science, research, and AI.</p>
+        <p><strong>Email:</strong> <a href="mailto:minjukim023@gmail.com">minjukim023@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com" target="_blank">LinkedIn Profile</a></p>
+        <p>GitHub: <a href="https://github.com/minjukim023" target="_blank">github.com/minjukim023</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container"><p>&copy; <span id="year"></span> Minju Kim. All Rights Reserved.</p></div></footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    (function() {
+      const root = document.documentElement, toggle = document.getElementById("theme-toggle");
+      function apply(t) { root.setAttribute("data-theme", t); toggle.textContent = t === "dark" ? "🌙" : "☀️"; }
+      const stored = localStorage.getItem("theme");
+      apply(stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+      toggle.addEventListener("click", () => {
+        const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        localStorage.setItem("theme", next); apply(next);
+      });
+    })();
+  </script>
+</body>
+</html>
