@@ -8,13 +8,13 @@
   <style>
     :root {
       --bg: #f9fafb; --bg-alt: #f3f4f6; --card-bg: #ffffff;
-      --text: #111827; --muted: #6b7280; --accent: #1a7a4a;
+      --text: #111827; --muted: #6b7280; --accent: #10aeb9;
       --border: #e5e7eb; --shadow: 0 6px 20px rgba(15,23,42,0.09);
       --sidebar-bg: #ffffff;
     }
     html[data-theme="dark"] {
       --bg: #050816; --bg-alt: #0b1020; --card-bg: #111827;
-      --text: #e5e7eb; --muted: #9ca3af; --accent: #22a05e;
+      --text: #e5e7eb; --muted: #9ca3af; --accent: #10aeb9;
       --border: #1f2937; --shadow: 0 6px 20px rgba(0,0,0,0.5);
       --sidebar-bg: #0b1020;
     }
@@ -26,7 +26,7 @@
     /* === SIDEBAR === */
     .sidebar {
       position: fixed; top: 0; left: 0;
-      width: 420px; height: 100vh;
+      width: 360px; height: 100vh;
       background: var(--sidebar-bg);
       border-right: 1px solid var(--border);
       overflow-y: auto;
@@ -39,32 +39,16 @@
       box-shadow: 4px 0 30px rgba(0,0,0,0.4);
     }
     .sidebar-top { display: flex; flex-direction: column; align-items: flex-start; gap: 1.2rem; }
-    /* Profile banner */
-    .profile-banner {
-      width: calc(100% + 4rem);
-      margin: -2.5rem -2rem 1.2rem;
-      position: relative; overflow: hidden;
+    .avatar {
+      width: 88px; height: 88px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 55%, #000));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; font-weight: 800; color: #fff;
+      box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 15%, transparent),
+                  0 8px 24px color-mix(in srgb, var(--accent) 30%, transparent);
     }
-    .profile-img {
-      width: 100%; height: 340px;
-      object-fit: cover; object-position: top center;
-      display: block;
-    }
-    .profile-overlay {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 3rem 1.8rem 1.4rem;
-      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.5) 55%, transparent 100%);
-    }
-    .profile-name {
-      font-size: 2rem; font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 0.35rem;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.5);
-      letter-spacing: -0.01em;
-    }
-    .profile-role {
-      font-size: 0.88rem; color: rgba(255,255,255,0.9); line-height: 1.5;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.6);
-      font-weight: 500;
-    }
+    .sidebar h1 { font-size: 1.5rem; font-weight: 800; line-height: 1.2; }
+    .sidebar .role { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
     .accent { color: var(--accent); }
     .sidebar .bio { font-size: 0.82rem; color: var(--muted); line-height: 1.6; border-top: 1px solid var(--border); padding-top: 0.9rem; }
     .sidebar-nav { display: flex; flex-direction: column; gap: 0.3rem; border-top: 1px solid var(--border); padding-top: 1rem; }
@@ -84,7 +68,7 @@
     .theme-toggle { width: 30px; height: 30px; border-radius: 999px; border: 1px solid var(--border); background: transparent; color: var(--text); cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; align-self: flex-start; margin-top: 0.5rem; }
 
     /* === MAIN CONTENT === */
-    .main-content { margin-left: 420px; min-height: 100vh; }
+    .main-content { margin-left: 360px; min-height: 100vh; }
 
     /* Projects header bar */
     .content-nav {
@@ -103,7 +87,7 @@
     .project-card { background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; transition: transform 0.18s ease, box-shadow 0.18s ease; }
     .project-card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0,0,0,0.13); }
     html[data-theme="dark"] .project-card:hover { box-shadow: 0 16px 36px rgba(0,0,0,0.5); }
-    .project-card-img { height: 160px; width: 100%; }
+    .project-card-img { height: 160px; width: 100%; object-fit: cover; display: block; }
     .project-card-body { padding: 1rem; }
     .project-card-body .meta { font-size: 0.7rem; color: var(--accent); margin-bottom: 0.2rem; }
     .project-card-body h3 { font-size: 0.92rem; margin-bottom: 0.25rem; }
@@ -132,12 +116,9 @@
 
     /* Responsive */
     @media (max-width: 860px) {
-      .sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); padding: 0; }
-      .profile-banner { width: 100%; margin: 0 0 0; }
-      .profile-img { height: 220px; }
+      .sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); flex-direction: row; flex-wrap: wrap; gap: 1rem; padding: 1.2rem 1.5rem; }
       .sidebar-top, .sidebar-btns, .sidebar-nav, .social-links { width: 100%; }
-      .sidebar-top { padding: 1.2rem 1.5rem; }
-      .sidebar-nav { padding: 0.8rem 1.5rem 1.2rem; border-top: 1px solid var(--border); }
+      .avatar { width: 64px; height: 64px; font-size: 1.4rem; }
       .main-content { margin-left: 0; }
     }
   </style>
@@ -145,15 +126,12 @@
 <body>
   <!-- === SIDEBAR === -->
   <aside class="sidebar">
-    <div class="profile-banner">
-      <img src="assets/profile.jpg" alt="Minju Kim" class="profile-img"/>
-      <div class="profile-overlay">
-        <p class="profile-name">Minju <span class="accent">Kim</span></p>
-        <p class="profile-role">Research Data Analyst · MS Data Science · Indiana University</p>
-      </div>
-    </div>
-
     <div class="sidebar-top">
+      <div class="avatar">MK</div>
+      <div>
+        <h1>Minju <span class="accent">Kim</span></h1>
+        <p class="role">Research Data Analyst<br>MS Data Science · Indiana University</p>
+      </div>
       <p class="bio">I analyze infant visual experience data using computer vision, and build data-driven insights at the intersection of AI, research, and human development.</p>
       <div class="sidebar-btns">
         <a href="https://drive.google.com/file/d/1VtZV4ETU5KibrUXBvr17Bgk2Mhgku9NU/view?usp=sharing" class="btn btn-p" target="_blank">Download Resume</a>
@@ -188,27 +166,27 @@
       <p class="section-intro">Computer vision, scientific visualization, and applied data science.</p>
       <div class="proj-grid">
         <div class="project-card">
-          <img src="assets/algae.jpg" alt="Microscopic Algae Classification" class="project-card-img" style="object-fit:cover;"/>
+          <img src="assets/algae.jpg" alt="Microscopic Algae Classification" class="project-card-img"/>
           <div class="project-card-body"><p class="meta">#ComputerVision #WaterQuality</p><h3>Microscopic Algae Classification</h3><p>Classified algae images to support water quality analysis and environmental monitoring.</p></div>
           <div class="project-card-links"><a href="#">GitHub</a><a href="#">Read</a></div>
         </div>
         <div class="project-card">
-          <div class="project-card-img" style="background:linear-gradient(135deg,#e53e3e,#f6ad55);"></div>
+          <img src="assets/heartattack.png" alt="Bridging the Gender Gap in Heart Attack" class="project-card-img"/>
           <div class="project-card-body"><p class="meta">#Ensemble #HeartAttack</p><h3>Bridging the Gender Gap in Heart Attack</h3><p>Ensemble models and feature importance for gender-related risk differences.</p></div>
           <div class="project-card-links"><a href="#">GitHub</a><a href="#">Read</a></div>
         </div>
         <div class="project-card">
-          <iframe src="https://www.youtube.com/embed/jLIZHvMSCqg?playlist=jLIZHvMSCqg&rel=0&fs=0&autoplay=1&loop=1&mute=1" class="project-card-img" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display:block;"></iframe>
+          <img src="assets/asteroid.png" alt="When Asteroids Strike: Deep Water Collisions" class="project-card-img"/>
           <div class="project-card-body"><p class="meta">#Paraview #Sketchfab</p><h3>When Asteroids Strike: Deep Water Collisions</h3><p>Visualized asteroid collision scenarios with ParaView and spatial data.</p></div>
           <div class="project-card-links"><a href="#">Demo</a><a href="#">Read</a></div>
         </div>
         <div class="project-card">
-          <div class="project-card-img" style="background:linear-gradient(135deg,#38a169,#68d391);"></div>
+          <img src="assets/baby.png" alt="Natural Statistics of Infant Visual Experience" class="project-card-img"/>
           <div class="project-card-body"><p class="meta">#ComputerVision #FeatureCongestion</p><h3>Natural Statistics of Infant Visual Experience</h3><p>Image statistics from infant head cameras across US & India.</p></div>
           <div class="project-card-links"><a href="#">Read</a></div>
         </div>
         <div class="project-card">
-          <div class="project-card-img" style="background:linear-gradient(135deg,#ed8936,#ecc94b);"></div>
+          <img src="assets/dashboard.png" alt="Creating a Dashboard for Usage of the HRA" class="project-card-img"/>
           <div class="project-card-body"><p class="meta">#PowerBI #InfoViz</p><h3>Creating a Dashboard for Usage of the HRA</h3><p>Power BI dashboard for Health Risk Assessment usage patterns.</p></div>
           <div class="project-card-links"><a href="#">Demo</a><a href="#">Read</a></div>
         </div>
