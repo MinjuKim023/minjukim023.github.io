@@ -148,26 +148,7 @@
     .other-section.alt { background: var(--bg-alt); }
     .other-section h2 { font-size: 1.6rem; margin-bottom: 1rem; }
 
-    /* === SKILLS OPTION A: Logo Grid === */
-    .skills-category-block { margin-bottom: 1.6rem; }
-    .skills-category-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.7rem; }
-    .skills-logo-row { display: flex; flex-wrap: wrap; gap: 0.7rem; }
-    .skill-logo-item {
-      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
-      padding: 0.7rem 0.9rem; border-radius: 14px;
-      background: var(--card-bg); border: 1px solid var(--border);
-      box-shadow: var(--shadow); min-width: 68px;
-      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
-      cursor: default;
-    }
-    .skill-logo-item:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 10px 24px rgba(0,0,0,0.12); }
-    html[data-theme="dark"] .skill-logo-item:hover { box-shadow: 0 10px 24px rgba(0,0,0,0.4); }
-    .skill-logo-item img { width: 32px; height: 32px; object-fit: contain; }
-    .skill-logo-item span { font-size: 0.72rem; font-weight: 500; color: var(--text); white-space: nowrap; }
-    .skill-logo-text-only { justify-content: center; padding: 0.85rem 1rem; }
-    .skill-logo-text-only span { font-size: 0.8rem; }
-
-    /* === SKILLS OPTION B: Skill Map === */
+    /* === SKILLS: Skill Map === */
     .skill-map-wrap { display: flex; align-items: stretch; gap: 0.5rem; }
     .skill-map-y-label { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); display: flex; align-items: center; }
     .skill-map-inner { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
@@ -402,72 +383,9 @@
       </div>
     </section>
 
-    <!-- SKILLS: OPTION A — Logo Grid -->
-    <section id="about" class="other-section alt">
+    <!-- SKILLS -->
+    <section id="about" class="other-section alt" style="padding-bottom:3rem;">
       <h2>Technical Skills</h2>
-      <p style="font-size:0.8rem;color:var(--muted);margin-bottom:0.4rem;letter-spacing:0.05em;text-transform:uppercase;font-weight:600;">— Option A: Logo Grid</p>
-      <div class="skills-category-block">
-        <div class="skills-category-label">Programming</div>
-        <div class="skills-logo-row">
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python"/><span>Python</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/r/r-original.svg" alt="R"/><span>R</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="SQL"/><span>SQL</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matlab/matlab-original.svg" alt="MATLAB"/><span>MATLAB</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5"/><span>HTML/CSS</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg" alt="Bash"/><span>Bash</span></div>
-        </div>
-      </div>
-      <div class="skills-category-block">
-        <div class="skills-category-label">AI / ML / DL</div>
-        <div class="skills-logo-row">
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg" alt="PyTorch"/><span>PyTorch</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"/><span>TensorFlow</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg" alt="Scikit-learn"/><span>Scikit-learn</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg" alt="NumPy"/><span>NumPy</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg" alt="Pandas"/><span>Pandas</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg" alt="OpenCV"/><span>OpenCV</span></div>
-          <div class="skill-logo-item skill-logo-text-only" style="background:color-mix(in srgb,var(--accent) 10%,var(--card-bg));border-color:var(--accent);"><span style="color:var(--accent);font-weight:700;">LLMs</span></div>
-          <div class="skill-logo-item skill-logo-text-only" style="background:color-mix(in srgb,var(--accent) 10%,var(--card-bg));border-color:var(--accent);"><span style="color:var(--accent);font-weight:700;">GenAI</span></div>
-        </div>
-      </div>
-      <div class="skills-category-block">
-        <div class="skills-category-label">Databases</div>
-        <div class="skills-logo-row">
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="MongoDB"/><span>MongoDB</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cassandra/cassandra-original.svg" alt="Cassandra"/><span>Cassandra</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/neo4j/neo4j-original.svg" alt="Neo4j"/><span>Neo4j</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"/><span>PostgreSQL</span></div>
-          <div class="skill-logo-item skill-logo-text-only"><span style="font-weight:700;">Snowflake</span></div>
-        </div>
-      </div>
-      <div class="skills-category-block">
-        <div class="skills-category-label">Visualization & Analytics</div>
-        <div class="skills-logo-row">
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matplotlib/matplotlib-original.svg" alt="Matplotlib"/><span>Matplotlib</span></div>
-          <div class="skill-logo-item skill-logo-text-only"><span style="font-weight:700;">Seaborn</span></div>
-          <div class="skill-logo-item skill-logo-text-only"><span style="font-weight:700;">Tableau</span></div>
-          <div class="skill-logo-item skill-logo-text-only"><span style="font-weight:700;">Power BI</span></div>
-          <div class="skill-logo-item skill-logo-text-only"><span style="font-weight:700;">ParaView</span></div>
-          <div class="skill-logo-item skill-logo-text-only"><span style="font-weight:700;">Gephi</span></div>
-        </div>
-      </div>
-      <div class="skills-category-block">
-        <div class="skills-category-label">Tools & Cloud</div>
-        <div class="skills-logo-row">
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git"/><span>Git</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker"/><span>Docker</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg" alt="Jupyter"/><span>Jupyter</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="VSCode"/><span>VS Code</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"/><span>AWS</span></div>
-          <div class="skill-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" alt="GCP"/><span>GCP</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS: OPTION B — Coordinate Bubble Chart -->
-    <section class="other-section" style="padding-bottom:3rem;">
-      <h2>Technical Skills</h2>
-      <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1.2rem;letter-spacing:0.05em;text-transform:uppercase;font-weight:600;">— Option B: Skill Map</p>
       <div class="skill-map-wrap">
         <div class="skill-map-y-label">Domain</div>
         <div class="skill-map-inner">
