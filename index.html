@@ -46,10 +46,10 @@
       background: linear-gradient(180deg, #0b1810 0%, #060e09 100%);
       box-shadow: 4px 0 30px rgba(0,0,0,0.4);
     }
-    .sidebar-top { display: flex; flex-direction: column; align-items: flex-start; gap: 1.2rem; }
+    .sidebar-top { display: flex; flex-direction: column; align-items: flex-start; gap: 0.8rem; }
     /* Profile photo banner */
     .profile-banner {
-      width: calc(100% + 4rem); margin: -2.5rem -2rem 1.5rem;
+      width: calc(100% + 4rem); margin: -2.5rem -2rem 0.8rem;
       position: relative; overflow: hidden; flex-shrink: 0;
     }
     .profile-banner::after {
@@ -63,7 +63,7 @@
       background: linear-gradient(to bottom, transparent 0%, rgba(11,24,16,0.5) 60%, rgba(11,24,16,0.92) 100%);
     }
     .profile-img {
-      width: 100%; height: 300px;
+      width: 100%; height: 360px;
       object-fit: cover; object-position: top center; display: block;
     }
     .profile-overlay {
@@ -88,18 +88,18 @@
     }
     .accent { color: var(--accent); }
     .sidebar-nav { display: flex; flex-direction: column; gap: 0.3rem; border-top: 1px solid var(--border); padding-top: 1rem; }
-    .sidebar-nav a { font-size: 0.95rem; font-weight: 600; color: var(--text); text-decoration: none; padding: 0.38rem 0; transition: color 0.15s; display: flex; align-items: center; gap: 0.4rem; }
+    .sidebar-nav a { font-size: 0.84rem; font-weight: 600; color: var(--text); text-decoration: none; padding: 0.28rem 0; transition: color 0.15s; display: flex; align-items: center; gap: 0.4rem; }
     .sidebar-nav a:hover { color: var(--accent); }
     .sidebar-nav a::before { content: "→"; font-size: 0.75rem; opacity: 0.4; transition: opacity 0.15s, color 0.15s; }
     .sidebar-nav a:hover::before { opacity: 1; color: var(--accent); }
     .sidebar-btns { display: flex; flex-direction: column; gap: 0.5rem; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.55rem 1.1rem; border-radius: 999px; font-size: 0.86rem; font-weight: 600; text-decoration: none; transition: transform 0.08s, box-shadow 0.08s; border: none; cursor: pointer; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.45rem 0.95rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: transform 0.08s, box-shadow 0.08s; border: none; cursor: pointer; }
     .btn-p { background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 65%, #000)); color: #fff; box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 32%, transparent); }
     .btn-p:hover { transform: translateY(-1px); }
     .btn-g { border: 1px solid var(--border); color: var(--text); background: transparent; }
     .btn-g:hover { background: var(--bg-alt); }
     .social-links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-    .social-links a { font-size: 0.86rem; font-weight: 600; color: var(--text); text-decoration: none; padding: 0.38rem 1rem; border: 1.5px solid var(--text); border-radius: 999px; transition: color 0.15s, border-color 0.15s, background 0.15s; }
+    .social-links a { font-size: 0.78rem; font-weight: 600; color: var(--text); text-decoration: none; padding: 0.3rem 0.85rem; border: 1.5px solid var(--text); border-radius: 999px; transition: color 0.15s, border-color 0.15s, background 0.15s; }
     .social-links a:hover { color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
     .theme-toggle { width: 30px; height: 30px; border-radius: 999px; border: 1px solid var(--border); background: transparent; color: var(--text); cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
 
@@ -150,7 +150,7 @@
 
     /* === SKILLS: Skill Map === */
     .skill-map-wrap { display: flex; align-items: stretch; gap: 0.5rem; }
-    .skill-map-y-label { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); display: flex; align-items: center; }
+    .skill-map-y-label { display: none; }
     .skill-map-inner { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
     .skill-map-grid { display: grid; grid-template-columns: 90px 1fr; gap: 0.6rem 0.8rem; align-items: center; }
     .skill-map-row-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); text-align: right; padding-right: 0.5rem; }
@@ -171,7 +171,7 @@
       margin-left: calc(var(--prof) * 8px);
     }
     .skill-bubble:hover { transform: scale(1.08); opacity: 1; }
-    .skill-map-x-axis { display: flex; justify-content: space-between; padding: 0.3rem 0.5rem 0 calc(90px + 0.8rem); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.05em; border-top: 1px dashed var(--border); margin-top: 0.2rem; padding-top: 0.4rem; }
+    .skill-map-x-axis { display: none; }
 
     /* About layout */
     .about-layout { display: flex; align-items: flex-start; gap: 2.5rem; }
@@ -231,6 +231,9 @@
       .sidebar-btns, .sidebar-nav, .social-links { width: 100%; }
       .sidebar-nav { padding: 0.8rem 1.5rem 0; }
       .main-content { margin-left: 0; }
+      .about-layout { flex-direction: column; gap: 1.5rem; }
+      .about-photo-wrap { width: 100%; display: flex; justify-content: center; }
+      .about-photo { width: 100%; height: 220px; border-radius: 12px; }
     }
   </style>
 </head>
