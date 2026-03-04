@@ -92,9 +92,20 @@
     .project-card-body .meta { font-size: 0.7rem; color: var(--accent); margin-bottom: 0.2rem; }
     .project-card-body h3 { font-size: 0.92rem; margin-bottom: 0.25rem; }
     .project-card-body p { font-size: 0.8rem; color: var(--muted); }
-    .project-card-links { padding: 0 1rem 1rem; display: flex; gap: 0.75rem; }
-    .project-card-links a { font-size: 0.78rem; color: var(--accent); text-decoration: none; }
-    .project-card-links a:hover { text-decoration: underline; }
+    .project-card-links { padding: 0.6rem 1rem 1rem; display: flex; gap: 0.45rem; flex-wrap: wrap; }
+    .project-card-links a {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      font-size: 0.71rem; font-weight: 600; letter-spacing: 0.01em;
+      padding: 0.3rem 0.75rem; border-radius: 999px; text-decoration: none;
+      border: 1px solid var(--border); color: var(--muted); background: var(--bg-alt);
+      transition: border-color 0.15s, color 0.15s, background 0.15s, transform 0.1s;
+    }
+    .project-card-links a:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 8%, var(--card-bg));
+      transform: translateY(-1px);
+    }
+    .project-card-links a svg { flex-shrink: 0; }
 
     /* Other sections */
     .other-section { padding: 2.5rem 2rem; }
@@ -168,32 +179,48 @@
         <div class="project-card">
           <img src="assets/algae.jpg" alt="Microscopic Algae Classification" class="project-card-img"/>
           <div class="project-card-body"><p class="meta">#ComputerVision #WaterQuality</p><h3>Microscopic Algae Classification</h3><p>Classified algae images to support water quality analysis and environmental monitoring.</p></div>
-          <div class="project-card-links"><a href="#">GitHub</a><a href="#">Read</a></div>
+          <div class="project-card-links">
+            <a href="https://github.com/MinjuKim023/Microscopic-Algae-Classification" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
+            <a href="https://github.com/MinjuKim023/Microscopic-Algae-Classification/blob/main/Algae_final%20paper.pdf" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Report</a>
+          </div>
         </div>
         <div class="project-card">
           <img src="assets/heartattack.png" alt="Bridging the Gender Gap in Heart Attack" class="project-card-img"/>
           <div class="project-card-body"><p class="meta">#Ensemble #HeartAttack</p><h3>Bridging the Gender Gap in Heart Attack</h3><p>Ensemble models and feature importance for gender-related risk differences.</p></div>
-          <div class="project-card-links"><a href="#">GitHub</a><a href="#">Read</a></div>
+          <div class="project-card-links">
+            <a href="https://github.com/MinjuKim023/Bridging-the-Gender-Gap-in-Heart-Attack" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
+            <a href="https://github.com/MinjuKim023/Bridging-the-Gender-Gap-in-Heart-Attack/blob/main/Final%20Report/final-mk159-lli4-lc51.pdf" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Report</a>
+          </div>
         </div>
         <div class="project-card">
           <img src="assets/asteroid.png" alt="When Asteroids Strike: Deep Water Collisions" class="project-card-img"/>
           <div class="project-card-body"><p class="meta">#Paraview #Sketchfab</p><h3>When Asteroids Strike: Deep Water Collisions</h3><p>Visualized asteroid collision scenarios with ParaView and spatial data.</p></div>
-          <div class="project-card-links"><a href="#">Demo</a><a href="#">Read</a></div>
+          <div class="project-card-links">
+            <a href="https://collectome.rt.iu.edu/frontend/exhibits/6759eef728048" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>Demo</a>
+            <a href="https://drive.google.com/file/d/1C46P9J9lWNxvSac9iEq4x1_S-6zsJEjS/view" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Slides</a>
+          </div>
         </div>
         <div class="project-card">
           <img src="assets/baby.png" alt="Natural Statistics of Infant Visual Experience" class="project-card-img"/>
           <div class="project-card-body"><p class="meta">#ComputerVision #FeatureCongestion</p><h3>Natural Statistics of Infant Visual Experience</h3><p>Image statistics from infant head cameras across US & India.</p></div>
-          <div class="project-card-links"><a href="#">Read</a></div>
+          <div class="project-card-links">
+            <a href="https://drive.google.com/file/d/1zU25AT8OWRiKEsFhsdlBtwIfIKDT_RSm/view" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Poster</a>
+          </div>
         </div>
         <div class="project-card">
           <img src="assets/dashboard.png" alt="Creating a Dashboard for Usage of the HRA" class="project-card-img"/>
           <div class="project-card-body"><p class="meta">#PowerBI #InfoViz</p><h3>Creating a Dashboard for Usage of the HRA</h3><p>Power BI dashboard for Health Risk Assessment usage patterns.</p></div>
-          <div class="project-card-links"><a href="#">Demo</a><a href="#">Read</a></div>
+          <div class="project-card-links">
+            <a href="https://drive.google.com/file/d/1NE9Km2rfP0q0T4n09CsXS3N6Fnq6SHWh/view" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Report</a>
+            <a href="https://drive.google.com/file/d/1Dcbzhdqx4l7pcvIKG3XoSQyjtEWKjTD7/view" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>Demo</a>
+          </div>
         </div>
         <div class="project-card">
           <div class="project-card-img" style="background:linear-gradient(135deg,#3182ce,#63b3ed);"></div>
           <div class="project-card-body"><p class="meta">#PDP #SHAP</p><h3>Predicting Telecom Customer Loyalty</h3><p>Loyalty prediction with PDP and SHAP model interpretation.</p></div>
-          <div class="project-card-links"><a href="#">GitHub</a></div>
+          <div class="project-card-links">
+            <a href="https://github.com/MinjuKim023/Predicting-Telecom-Customer-Loyalty/tree/main" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
+          </div>
         </div>
       </div>
     </section>
