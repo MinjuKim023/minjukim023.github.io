@@ -101,6 +101,8 @@
     .social-links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
     .social-links a { font-size: 0.78rem; font-weight: 600; color: var(--text); text-decoration: none; padding: 0.3rem 0.85rem; border: 1.5px solid var(--text); border-radius: 999px; transition: color 0.15s, border-color 0.15s, background 0.15s; }
     .social-links a:hover { color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+    .social-email-btn { font-size: 0.9rem; padding: 0.3rem 0.75rem; border: 1.5px solid var(--text); border-radius: 999px; background: transparent; cursor: pointer; transition: border-color 0.15s, background 0.15s; line-height: 1; }
+    .social-email-btn:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
     .theme-toggle { width: 30px; height: 30px; border-radius: 999px; border: 1px solid var(--border); background: transparent; color: var(--text); cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
 
     /* === MAIN CONTENT === */
@@ -262,6 +264,7 @@
       <div class="social-links">
         <a href="https://github.com/minjukim023" target="_blank">GitHub</a>
         <a href="https://www.linkedin.com/in/minjukim023/" target="_blank">LinkedIn</a>
+        <button onclick="document.getElementById('email-modal').classList.add('open')" class="social-email-btn" aria-label="Send Email">✉️</button>
       </div>
     </div>
     <nav class="sidebar-nav">
