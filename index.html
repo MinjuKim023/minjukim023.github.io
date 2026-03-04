@@ -233,7 +233,11 @@
       .main-content { margin-left: 0; }
       .about-layout { flex-direction: column; gap: 1.5rem; }
       .about-photo-wrap { width: 100%; display: flex; justify-content: center; }
-      .about-photo { width: 100%; height: 220px; border-radius: 12px; }
+      .about-photo { width: 60%; height: auto; aspect-ratio: 3/4; border-radius: 12px; }
+      .skill-map-grid { grid-template-columns: 1fr; gap: 0.4rem; }
+      .skill-map-row-label { text-align: left; padding-right: 0; padding-bottom: 0.1rem; }
+      .skill-map-row { flex-wrap: wrap; border-radius: 12px; }
+      .skill-bubble { white-space: normal; margin-left: 0 !important; }
     }
   </style>
 </head>
@@ -335,7 +339,7 @@
       <h2>Experience</h2>
       <div class="timeline">
         <div class="tl-item"><div class="tl-dot"></div><div class="tl-content">
-          <h3>Research Data Scientist (AI)</h3><p class="card-meta">Cognitive Development Lab, IU · May 2024 – Present</p>
+          <h3>Research Data Scientist</h3><p class="card-meta">Cognitive Development Lab, IU · May 2024 – Present</p>
           <ul>
             <li>Analyzing 500,000+ egocentric head-camera images/videos from infants aged 4–30 months to investigate how visual input changes by age and impacts early visual development.</li>
             <li>Developing computer vision pipelines using feature-congestion scores, image segmentation models, and semantic measures to quantify visual complexity in infant environments.</li>
@@ -452,7 +456,7 @@
       <h2>About Me</h2>
       <div class="about-layout">
         <div class="about-text">
-          <p>Research Data Scientist (AI) at the Cognitive Development Lab, Indiana University. MS Data Science graduate specializing in Machine Learning and Computer Vision at the Luddy School of Informatics, Computing, and Engineering.</p>
+          <p>Research Data Scientist at the Cognitive Development Lab, Indiana University. MS Data Science graduate specializing in Machine Learning and Computer Vision at the Luddy School of Informatics, Computing, and Engineering.</p>
           <p style="margin-top:0.75rem;">My path started with Business Administration. A marketing internship in South Korea sparked my curiosity in AI and data-driven decisions, leading me to pursue a Master's in Data Science — focusing on Machine Learning, Computer Vision, NLP, and Scientific Visualization. I'm passionate about building AI systems that bridge research and real-world impact.</p>
         </div>
         <div class="about-photo-wrap">
