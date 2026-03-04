@@ -137,6 +137,19 @@
     .other-section { padding: 2.5rem 2rem; }
     .other-section.alt { background: var(--bg-alt); }
     .other-section h2 { font-size: 1.6rem; margin-bottom: 1rem; }
+
+    /* About layout */
+    .about-layout { display: flex; align-items: flex-start; gap: 2.5rem; }
+    .about-text { flex: 1; }
+    .about-photo-wrap { flex-shrink: 0; }
+    .about-photo {
+      width: 200px; height: 260px;
+      object-fit: cover; object-position: top center;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+      display: block;
+    }
+    html[data-theme="dark"] .about-photo { box-shadow: 0 8px 32px rgba(0,0,0,0.45); }
     .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem; }
     .card { background: var(--card-bg); border-radius: 14px; padding: 1.2rem; border: 1px solid var(--border); box-shadow: var(--shadow); }
     .card h3 { margin-top: 0; font-size: 0.98rem; }
@@ -361,8 +374,15 @@
     <!-- ABOUT -->
     <section class="other-section">
       <h2>About Me</h2>
-      <p>Research Data Scientist (AI) at the Cognitive Development Lab, Indiana University. MS Data Science graduate specializing in Machine Learning and Computer Vision at the Luddy School of Informatics, Computing, and Engineering.</p>
-      <p style="margin-top:0.75rem;">My path started with Business Administration. A marketing internship in South Korea sparked my curiosity in AI and data-driven decisions, leading me to pursue a Master's in Data Science — focusing on Machine Learning, Computer Vision, NLP, and Scientific Visualization. I'm passionate about building AI systems that bridge research and real-world impact.</p>
+      <div class="about-layout">
+        <div class="about-text">
+          <p>Research Data Scientist (AI) at the Cognitive Development Lab, Indiana University. MS Data Science graduate specializing in Machine Learning and Computer Vision at the Luddy School of Informatics, Computing, and Engineering.</p>
+          <p style="margin-top:0.75rem;">My path started with Business Administration. A marketing internship in South Korea sparked my curiosity in AI and data-driven decisions, leading me to pursue a Master's in Data Science — focusing on Machine Learning, Computer Vision, NLP, and Scientific Visualization. I'm passionate about building AI systems that bridge research and real-world impact.</p>
+        </div>
+        <div class="about-photo-wrap">
+          <img src="assets/profile2.jpeg" alt="Minju Kim" class="about-photo"/>
+        </div>
+      </div>
     </section>
 
     <!-- CONTACT -->
