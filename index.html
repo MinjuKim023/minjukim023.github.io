@@ -7,21 +7,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg: #f9fafb; --bg-alt: #f3f4f6; --card-bg: #ffffff;
+      --bg: #f4f9f6; --bg-alt: #eaf3ed; --card-bg: #ffffff;
       --text: #111827; --muted: #6b7280; --accent: #1a7a4a;
-      --border: #e5e7eb; --shadow: 0 6px 20px rgba(15,23,42,0.09);
+      --border: #d9ece1; --shadow: 0 6px 20px rgba(15,42,25,0.09);
       --sidebar-bg: #ffffff;
     }
     html[data-theme="dark"] {
-      --bg: #050816; --bg-alt: #0b1020; --card-bg: #111827;
+      --bg: #060e09; --bg-alt: #0b1810; --card-bg: #101e15;
       --text: #e5e7eb; --muted: #9ca3af; --accent: #28a85e;
-      --border: #1f2937; --shadow: 0 6px 20px rgba(0,0,0,0.5);
-      --sidebar-bg: #0b1020;
+      --border: #1c3024; --shadow: 0 6px 20px rgba(0,0,0,0.5);
+      --sidebar-bg: #0b1810;
     }
     *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: "Inter", system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-    html[data-theme="dark"] body { background: radial-gradient(circle at top left, #111827, #020617 60%); }
+    html[data-theme="dark"] body { background: radial-gradient(circle at top left, #111e15, #060e09 60%); }
 
     /* === SIDEBAR === */
     .sidebar {
@@ -35,7 +35,7 @@
       z-index: 10;
     }
     html[data-theme="dark"] .sidebar {
-      background: linear-gradient(180deg, #0b1020 0%, #050816 100%);
+      background: linear-gradient(180deg, #0b1810 0%, #060e09 100%);
       box-shadow: 4px 0 30px rgba(0,0,0,0.4);
     }
     .sidebar-top { display: flex; flex-direction: column; align-items: flex-start; gap: 1.2rem; }
