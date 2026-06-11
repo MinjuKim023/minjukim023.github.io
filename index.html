@@ -15,16 +15,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg: #f4f8fc; --bg-alt: #e8f1fa; --card-bg: #ffffff;
-      --text: #111827; --muted: #6b7280; --accent: #1a7a4a;
-      --border: #d0e3f5; --shadow: 0 6px 20px rgba(10,30,60,0.09);
+      --bg: #f0f7fd; --bg-alt: #D8EAF4; --card-bg: #ffffff;
+      --text: #111827; --muted: #6b7280; --accent: #1a7a8a;
+      --accent-warm: #C4A020;
+      --border: #B8D4E8; --shadow: 0 6px 20px rgba(10,40,80,0.09);
       --sidebar-bg: #ffffff;
     }
     html[data-theme="dark"] {
-      --bg: #05090f; --bg-alt: #0a1220; --card-bg: #0f1c2e;
-      --text: #e5e7eb; --muted: #9ca3af; --accent: #28a85e;
-      --border: #1a2d45; --shadow: 0 6px 20px rgba(0,0,0,0.5);
-      --sidebar-bg: #0a1220;
+      --bg: #05090f; --bg-alt: #091525; --card-bg: #0f1c2e;
+      --text: #e5e7eb; --muted: #9ca3af; --accent: #22b0c8;
+      --accent-warm: #D4B428;
+      --border: #1a3050; --shadow: 0 6px 20px rgba(0,0,0,0.5);
+      --sidebar-bg: #091525;
     }
     *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -43,36 +45,26 @@
       z-index: 10;
     }
     html[data-theme="dark"] .sidebar {
-      background: linear-gradient(180deg, #0a1220 0%, #05090f 100%);
+      background: linear-gradient(180deg, #091525 0%, #05090f 100%);
       box-shadow: 4px 0 30px rgba(0,0,0,0.4);
     }
     .sidebar-top { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; width: 100%; }
 
-    /* === PROFILE: sunlight banner + circle photo === */
+    /* === PROFILE: sunlight banner === */
     .sidebar-banner {
       width: calc(100% + 4rem); margin: -2.5rem -2rem 0;
-      height: 148px; position: relative; overflow: hidden; flex-shrink: 0;
+      height: 200px; position: relative; overflow: hidden; flex-shrink: 0;
       background: url('assets/sunlight.jpeg') center/cover no-repeat;
     }
     .sidebar-banner::after {
       content: ""; position: absolute; inset: 0;
-      background: rgba(255,255,255,0.08);
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 35%, rgba(255,255,255,0.5) 100%);
       pointer-events: none;
     }
     html[data-theme="dark"] .sidebar-banner::after {
-      background: rgba(5,9,15,0.45);
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 25%, rgba(5,9,15,0.72) 100%);
     }
-    .profile-circle-wrap {
-      position: absolute; bottom: -44px; left: 50%; transform: translateX(-50%); z-index: 2;
-    }
-    .profile-circle {
-      width: 88px; height: 88px; border-radius: 50%;
-      object-fit: cover; object-position: top center; display: block;
-      border: 3px solid #fff;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.22);
-    }
-    html[data-theme="dark"] .profile-circle { border-color: var(--card-bg); }
-    .sidebar-info { text-align: center; padding-top: 54px; width: 100%; }
+    .sidebar-info { text-align: center; padding-top: 1.1rem; width: 100%; }
     .profile-name { font-size: 1.45rem; font-weight: 800; color: var(--text); letter-spacing: -0.01em; margin-bottom: 0.2rem; line-height: 1.2; }
     .profile-role { font-size: 0.82rem; color: var(--accent); font-weight: 600; margin-bottom: 0.1rem; }
     .profile-bio { font-size: 0.77rem; color: var(--muted); line-height: 1.65; margin-top: 0.4rem; }
@@ -213,31 +205,30 @@
     .modal-actions .btn { flex: 1; justify-content: center; }
 
     /* === PUBLICATIONS & TALKS === */
-    .pub-list { display: flex; flex-direction: column; gap: 1rem; }
-    .pub-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem 1.4rem; box-shadow: var(--shadow); transition: transform 0.15s, box-shadow 0.15s; }
-    .pub-item:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.11); }
-    html[data-theme="dark"] .pub-item:hover { box-shadow: 0 12px 28px rgba(0,0,0,0.4); }
-    .pub-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
-    .pub-badge { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.2rem 0.65rem; border-radius: 999px; }
-    .pub-badge-journal { background: color-mix(in srgb, #3182ce 14%, var(--card-bg)); color: #3182ce; border: 1px solid color-mix(in srgb, #3182ce 30%, var(--border)); }
-    .pub-badge-talk { background: color-mix(in srgb, var(--accent) 14%, var(--card-bg)); color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border)); }
-    .pub-badge-award { background: color-mix(in srgb, #c9891a 14%, var(--card-bg)); color: #c9891a; border: 1px solid color-mix(in srgb, #c9891a 30%, var(--border)); }
-    html[data-theme="dark"] .pub-badge-journal { color: #63b3ed; }
-    html[data-theme="dark"] .pub-badge-award { color: #f6ad55; }
-    .pub-year { font-size: 0.75rem; color: var(--muted); margin-left: auto; }
-    .pub-title { font-size: 0.94rem; font-weight: 600; margin-bottom: 0.25rem; line-height: 1.45; }
-    .pub-venue { font-size: 0.8rem; color: var(--muted); }
-    .pub-photos { display: flex; gap: 0.75rem; margin-top: 1rem; }
-    .pub-photo { flex: 1; border-radius: 10px; object-fit: cover; height: 190px; border: 1px solid var(--border); display: block; }
-    @media (max-width: 860px) { .pub-photos { flex-direction: column; } .pub-photo { height: 200px; width: 100%; } }
+    .pub-list { display: flex; flex-direction: column; gap: 0.55rem; }
+    .pub-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 11px; padding: 0.78rem 1.05rem; box-shadow: var(--shadow); transition: transform 0.15s, box-shadow 0.15s; }
+    .pub-item:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,0.1); }
+    html[data-theme="dark"] .pub-item:hover { box-shadow: 0 10px 22px rgba(0,0,0,0.4); }
+    .pub-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.32rem; }
+    .pub-badge { font-size: 0.63rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.15rem 0.55rem; border-radius: 999px; }
+    .pub-badge-journal { background: color-mix(in srgb, var(--accent) 12%, var(--card-bg)); color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border)); }
+    .pub-badge-talk { background: color-mix(in srgb, #2d7bb5 12%, var(--card-bg)); color: #2d7bb5; border: 1px solid color-mix(in srgb, #2d7bb5 28%, var(--border)); }
+    .pub-badge-award { background: color-mix(in srgb, var(--accent-warm) 13%, var(--card-bg)); color: var(--accent-warm); border: 1px solid color-mix(in srgb, var(--accent-warm) 28%, var(--border)); }
+    html[data-theme="dark"] .pub-badge-talk { color: #63b3ed; }
+    .pub-year { font-size: 0.71rem; color: var(--muted); margin-left: auto; }
+    .pub-title { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.15rem; line-height: 1.4; }
+    .pub-venue { font-size: 0.76rem; color: var(--muted); }
+    .pub-photos { display: flex; gap: 0.55rem; margin-top: 0.7rem; }
+    .pub-photo { flex: 1; border-radius: 8px; object-fit: cover; height: 112px; border: 1px solid var(--border); display: block; }
+    @media (max-width: 860px) { .pub-photos { flex-direction: column; } .pub-photo { height: 155px; width: 100%; } }
 
     .site-footer { border-top: 1px solid var(--border); padding: 1rem 2rem; background: var(--bg-alt); font-size: 0.78rem; color: var(--muted); }
 
     /* Responsive */
     @media (max-width: 860px) {
       .sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); flex-direction: column; gap: 1rem; padding: 0 0 1.5rem; }
-      .sidebar-banner { width: 100%; margin: 0; height: 130px; }
-      .sidebar-info { padding: 0 1.5rem 0.5rem; }
+      .sidebar-banner { width: 100%; margin: 0; height: 170px; }
+      .sidebar-info { padding: 0.9rem 1.5rem 0.5rem; }
       .sidebar-top { padding: 0 1.5rem; }
       .sidebar-btns, .sidebar-nav, .social-links { width: 100%; }
       .sidebar-nav { padding: 0.8rem 1.5rem 0; }
@@ -257,11 +248,7 @@
 <body>
   <!-- === SIDEBAR === -->
   <aside class="sidebar">
-    <div class="sidebar-banner">
-      <div class="profile-circle-wrap">
-        <img src="assets/profile1.jpeg" alt="Minju Kim" class="profile-circle"/>
-      </div>
-    </div>
+    <div class="sidebar-banner"></div>
     <div class="sidebar-info">
       <p class="profile-name">Minju <span class="accent">Kim</span></p>
       <p class="profile-role">Research Data Scientist</p>
