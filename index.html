@@ -15,21 +15,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg: #f4f9f6; --bg-alt: #eaf3ed; --card-bg: #ffffff;
+      --bg: #f4f8fc; --bg-alt: #e8f1fa; --card-bg: #ffffff;
       --text: #111827; --muted: #6b7280; --accent: #1a7a4a;
-      --border: #d9ece1; --shadow: 0 6px 20px rgba(15,42,25,0.09);
+      --border: #d0e3f5; --shadow: 0 6px 20px rgba(10,30,60,0.09);
       --sidebar-bg: #ffffff;
     }
     html[data-theme="dark"] {
-      --bg: #060e09; --bg-alt: #0b1810; --card-bg: #101e15;
+      --bg: #05090f; --bg-alt: #0a1220; --card-bg: #0f1c2e;
       --text: #e5e7eb; --muted: #9ca3af; --accent: #28a85e;
-      --border: #1c3024; --shadow: 0 6px 20px rgba(0,0,0,0.5);
-      --sidebar-bg: #0b1810;
+      --border: #1a2d45; --shadow: 0 6px 20px rgba(0,0,0,0.5);
+      --sidebar-bg: #0a1220;
     }
     *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: "Inter", system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-    html[data-theme="dark"] body { background: radial-gradient(circle at top left, #111e15, #060e09 60%); }
+    html[data-theme="dark"] body { background: radial-gradient(circle at top left, #0f1c2e, #05090f 60%); }
 
     /* === SIDEBAR === */
     .sidebar {
@@ -43,49 +43,39 @@
       z-index: 10;
     }
     html[data-theme="dark"] .sidebar {
-      background: linear-gradient(180deg, #0b1810 0%, #060e09 100%);
+      background: linear-gradient(180deg, #0a1220 0%, #05090f 100%);
       box-shadow: 4px 0 30px rgba(0,0,0,0.4);
     }
     .sidebar-top { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; width: 100%; }
-    /* Profile photo banner */
-    .profile-banner {
-      width: calc(100% + 4rem); margin: -2.5rem -2rem 0.8rem;
-      position: relative; overflow: hidden; flex-shrink: 0;
+
+    /* === PROFILE: sunlight banner + circle photo === */
+    .sidebar-banner {
+      width: calc(100% + 4rem); margin: -2.5rem -2rem 0;
+      height: 148px; position: relative; overflow: hidden; flex-shrink: 0;
+      background: url('assets/sunlight.jpeg') center/cover no-repeat;
     }
-    .profile-banner::after {
-      content: "";
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 120px;
-      background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0.92) 100%);
+    .sidebar-banner::after {
+      content: ""; position: absolute; inset: 0;
+      background: rgba(255,255,255,0.08);
       pointer-events: none;
     }
-    html[data-theme="dark"] .profile-banner::after {
-      background: linear-gradient(to bottom, transparent 0%, rgba(11,24,16,0.5) 60%, rgba(11,24,16,0.92) 100%);
+    html[data-theme="dark"] .sidebar-banner::after {
+      background: rgba(5,9,15,0.45);
     }
-    .profile-img {
-      width: 100%; height: 360px;
+    .profile-circle-wrap {
+      position: absolute; bottom: -44px; left: 50%; transform: translateX(-50%); z-index: 2;
+    }
+    .profile-circle {
+      width: 88px; height: 88px; border-radius: 50%;
       object-fit: cover; object-position: top center; display: block;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.22);
     }
-    .profile-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0.0) 100%);
-      display: flex; flex-direction: column; justify-content: flex-start;
-      padding: 1.8rem;
-    }
-    .profile-name {
-      font-size: 1.95rem; font-weight: 800; color: #fff;
-      line-height: 1.15; margin-bottom: 0.3rem;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.7); letter-spacing: -0.01em;
-    }
-    .profile-role {
-      font-size: 0.92rem; color: rgba(255,255,255,0.88);
-      font-weight: 500; line-height: 1.55; margin-bottom: 0.75rem;
-      text-shadow: 0 1px 8px rgba(0,0,0,0.7);
-    }
-    .profile-bio {
-      font-size: 0.86rem; color: rgba(255,255,255,0.72);
-      line-height: 1.6; text-shadow: 0 1px 6px rgba(0,0,0,0.7);
-    }
+    html[data-theme="dark"] .profile-circle { border-color: var(--card-bg); }
+    .sidebar-info { text-align: center; padding-top: 54px; width: 100%; }
+    .profile-name { font-size: 1.45rem; font-weight: 800; color: var(--text); letter-spacing: -0.01em; margin-bottom: 0.2rem; line-height: 1.2; }
+    .profile-role { font-size: 0.82rem; color: var(--accent); font-weight: 600; margin-bottom: 0.1rem; }
+    .profile-bio { font-size: 0.77rem; color: var(--muted); line-height: 1.65; margin-top: 0.4rem; }
     .accent { color: var(--accent); }
     .sidebar-nav { display: flex; flex-direction: column; gap: 0.3rem; border-top: 1px solid var(--border); padding-top: 1rem; align-items: center; width: 100%; }
     .sidebar-nav a { font-size: 0.84rem; font-weight: 600; color: var(--text); text-decoration: none; padding: 0.28rem 0; transition: color 0.15s; display: flex; align-items: center; gap: 0.4rem; justify-content: center; }
@@ -246,8 +236,8 @@
     /* Responsive */
     @media (max-width: 860px) {
       .sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); flex-direction: column; gap: 1rem; padding: 0 0 1.5rem; }
-      .profile-banner { width: 100%; margin: 0 0 0.5rem; }
-      .profile-img { height: 280px; }
+      .sidebar-banner { width: 100%; margin: 0; height: 130px; }
+      .sidebar-info { padding: 0 1.5rem 0.5rem; }
       .sidebar-top { padding: 0 1.5rem; }
       .sidebar-btns, .sidebar-nav, .social-links { width: 100%; }
       .sidebar-nav { padding: 0.8rem 1.5rem 0; }
@@ -267,13 +257,15 @@
 <body>
   <!-- === SIDEBAR === -->
   <aside class="sidebar">
-    <div class="profile-banner">
-      <img src="assets/profile1.jpeg" alt="Minju Kim" class="profile-img"/>
-      <div class="profile-overlay">
-        <p class="profile-name">Minju <span class="accent">Kim</span></p>
-        <p class="profile-role">Research Data Scientist</p>
-        <p class="profile-bio" style="font-size:0.78rem;color:rgba(255,255,255,0.65);line-height:1.7;margin-top:0.2rem;">Computer Vision &amp; Machine Learning Research &nbsp;·&nbsp; Cognitive Development Lab &nbsp;·&nbsp; MS in Data Science</p>
+    <div class="sidebar-banner">
+      <div class="profile-circle-wrap">
+        <img src="assets/profile1.jpeg" alt="Minju Kim" class="profile-circle"/>
       </div>
+    </div>
+    <div class="sidebar-info">
+      <p class="profile-name">Minju <span class="accent">Kim</span></p>
+      <p class="profile-role">Research Data Scientist</p>
+      <p class="profile-bio">Computer Vision &amp; Machine Learning &nbsp;·&nbsp; Cognitive Development Lab &nbsp;·&nbsp; MS Data Science</p>
     </div>
     <div class="sidebar-top">
       <div class="sidebar-btns">
