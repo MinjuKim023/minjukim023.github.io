@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>Minju Kim | Portfolio</title>
+  <title>Minju Kim</title>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEW9WZ7MZG"></script>
   <script>
@@ -12,595 +12,465 @@
     gtag('config', 'G-DEW9WZ7MZG');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <meta name="description" content="Minju Kim is a Research Data Scientist at the Cognitive Development Lab, Indiana University, working on computer vision and infants' visual experience."/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg: #f0f7fd; --bg-alt: #D8EAF4; --card-bg: #ffffff;
-      --text: #111827; --muted: #6b7280; --accent: #1a7a8a;
-      --accent-warm: #C4A020;
-      --border: #B8D4E8; --shadow: 0 6px 20px rgba(10,40,80,0.09);
-      --sidebar-bg: #ffffff;
+      --bg: #ffffff; --text: #1a1f27; --muted: #5f6875;
+      --accent: #17697a; --border: #e3e6ea; --soft: #f5f6f8;
+      --rail: 176px;
     }
     html[data-theme="dark"] {
-      --bg: #05090f; --bg-alt: #091525; --card-bg: #0f1c2e;
-      --text: #e5e7eb; --muted: #9ca3af; --accent: #22b0c8;
-      --accent-warm: #D4B428;
-      --border: #1a3050; --shadow: 0 6px 20px rgba(0,0,0,0.5);
-      --sidebar-bg: #091525;
+      --bg: #12161c; --text: #e6e8eb; --muted: #a0a8b3;
+      --accent: #5cc3d6; --border: #2a3039; --soft: #1b2027;
+      color-scheme: dark;
     }
     *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: "Inter", system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-    html[data-theme="dark"] body { background: radial-gradient(circle at top left, #0f1c2e, #05090f 60%); }
+    html { scroll-behavior: smooth; scroll-padding-top: 1.5rem; }
+    body { font-family: "Inter", system-ui, sans-serif; font-size: 16px; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul { padding-left: 1.1rem; }
+    li { margin-top: 0.3rem; }
 
-    /* === SIDEBAR === */
-    .sidebar {
+    /* === LEFT MENU === */
+    .rail {
       position: fixed; top: 0; left: 0;
-      width: 360px; height: 100vh;
-      background: var(--sidebar-bg);
+      width: var(--rail); height: 100vh;
       border-right: 1px solid var(--border);
+      padding: 1.75rem 1.25rem;
       overflow-y: auto;
-      display: flex; flex-direction: column; justify-content: space-between;
-      padding: 2.5rem 2rem;
-      z-index: 10;
+      display: flex; flex-direction: column; gap: 1.25rem;
     }
-    html[data-theme="dark"] .sidebar {
-      background: linear-gradient(180deg, #091525 0%, #05090f 100%);
-      box-shadow: 4px 0 30px rgba(0,0,0,0.4);
-    }
-    .sidebar-top { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; width: 100%; }
-
-    /* === PROFILE: sunlight banner === */
-    .sidebar-banner {
-      width: calc(100% + 4rem); margin: -2.5rem -2rem 0;
-      height: 200px; position: relative; overflow: hidden; flex-shrink: 0;
-      background: url('assets/sunlight.jpeg') right center/cover no-repeat;
-    }
-    .sidebar-banner::after {
-      content: ""; position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0) 35%, rgba(255,255,255,0.5) 100%);
-      pointer-events: none;
-    }
-    html[data-theme="dark"] .sidebar-banner::after {
-      background: linear-gradient(to bottom, rgba(0,0,0,0) 25%, rgba(5,9,15,0.72) 100%);
-    }
-    .sidebar-info { text-align: center; padding-top: 1.1rem; width: 100%; }
-    .profile-name { font-size: 1.45rem; font-weight: 800; color: var(--text); letter-spacing: -0.01em; margin-bottom: 0.2rem; line-height: 1.2; }
-    .profile-role { font-size: 0.82rem; color: var(--accent); font-weight: 600; margin-bottom: 0.1rem; }
-    .profile-bio { font-size: 0.77rem; color: var(--muted); line-height: 1.65; margin-top: 0.4rem; }
-    .accent { color: var(--accent); }
-    .sidebar-nav { display: flex; flex-direction: column; gap: 0.3rem; border-top: 1px solid var(--border); padding-top: 1rem; align-items: center; width: 100%; }
-    .sidebar-nav a { font-size: 0.84rem; font-weight: 600; color: var(--text); text-decoration: none; padding: 0.28rem 0; transition: color 0.15s; display: flex; align-items: center; gap: 0.4rem; justify-content: center; }
-    .sidebar-nav a:hover { color: var(--accent); }
-    .sidebar-nav a::before { content: "→"; font-size: 0.75rem; opacity: 0.4; transition: opacity 0.15s, color 0.15s; }
-    .sidebar-nav a:hover::before { opacity: 1; color: var(--accent); }
-    .sidebar-btns { display: flex; flex-direction: column; gap: 0.5rem; width: 100%; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.45rem 0.95rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: transform 0.08s, box-shadow 0.08s; border: none; cursor: pointer; }
-    .btn-p { background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 65%, #000)); color: #fff; box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 32%, transparent); }
-    .btn-p:hover { transform: translateY(-1px); }
-    .btn-g { border: 1px solid var(--border); color: var(--text); background: transparent; }
-    .btn-g:hover { background: var(--bg-alt); }
-    .social-links { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
-    .social-links a { font-size: 0.78rem; font-weight: 600; color: var(--text); text-decoration: none; padding: 0.3rem 0.85rem; border: 1.5px solid var(--text); border-radius: 999px; transition: color 0.15s, border-color 0.15s, background 0.15s; }
-    .social-links a:hover { color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
-    .social-email-btn { font-size: 0.9rem; padding: 0.3rem 0.75rem; border: 1.5px solid var(--text); border-radius: 999px; background: transparent; cursor: pointer; transition: border-color 0.15s, background 0.15s; line-height: 1; }
-    .social-email-btn:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
-    .theme-toggle { width: 30px; height: 30px; border-radius: 999px; border: 1px solid var(--border); background: transparent; color: var(--text); cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
+    .rail-name { font-size: 1.05rem; font-weight: 700; color: var(--text); }
+    .rail-name:hover { text-decoration: none; }
+    .rail-nav { display: flex; flex-direction: column; gap: 0.1rem; }
+    .rail-nav a { font-size: 0.875rem; color: var(--muted); padding: 0.2rem 0; }
+    .rail-nav a:hover { color: var(--accent); text-decoration: none; }
+    .rail-nav a.active { color: var(--accent); font-weight: 600; }
+    .theme-toggle { margin-top: auto; align-self: flex-start; font: inherit; font-size: 0.8rem; color: var(--muted); background: none; border: none; cursor: pointer; padding: 0.2rem 0; }
+    .theme-toggle:hover { color: var(--accent); }
 
     /* === MAIN CONTENT === */
-    .main-content { margin-left: 360px; min-height: 100vh; }
+    main { margin-left: var(--rail); padding: 3rem 2.5rem 2rem; }
+    .wrap { max-width: 800px; margin: 0 auto; }
+    section { padding-bottom: 2.5rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; margin-bottom: 0; }
+    h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 1.1rem; }
+    h3 { font-size: 1rem; font-weight: 600; }
+    .subhead { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 1.6rem 0 0.6rem; }
+    .subhead:first-of-type { margin-top: 0; }
+    .meta { font-size: 0.875rem; color: var(--muted); }
 
-    /* Projects header bar */
-    .content-nav {
-      position: sticky; top: 0; z-index: 5;
-      background: color-mix(in srgb, var(--bg) 90%, transparent);
-      backdrop-filter: blur(16px); border-bottom: 1px solid var(--border);
-      padding: 0.6rem 2rem; display: flex; align-items: center; justify-content: space-between;
-    }
-    .content-nav span { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
+    /* About */
+    .about { display: flex; align-items: flex-start; gap: 2.25rem; }
+    .about-text { flex: 1; min-width: 0; }
+    .about h1 { font-size: 2rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
+    .about-role { color: var(--muted); margin: 0.25rem 0 1rem; }
+    .about-text p + p { margin-top: 0.75rem; }
+    .about-photo { width: 230px; height: 230px; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; }
+    .links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+    .btn { font-size: 0.875rem; font-weight: 500; padding: 0.35rem 0.85rem; border: 1px solid var(--border); border-radius: 6px; color: var(--text); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+    .btn-p { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+    .btn-p:hover { color: var(--bg); opacity: 0.88; }
 
-    /* Projects grid */
-    .projects-section { padding: 2rem; }
-    .projects-section h2 { font-size: 1.7rem; margin-bottom: 0.5rem; }
-    .section-intro { color: var(--muted); margin-bottom: 1.5rem; font-size: 0.9rem; }
-    .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
-    .project-card { background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; transition: transform 0.18s ease, box-shadow 0.18s ease; }
-    .project-card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0,0,0,0.13); }
-    html[data-theme="dark"] .project-card:hover { box-shadow: 0 16px 36px rgba(0,0,0,0.5); }
-    .project-card-img { height: 160px; width: 100%; object-fit: cover; display: block; }
-    .project-card-body { padding: 1rem; }
-    .project-card-body .meta { font-size: 0.7rem; color: var(--accent); margin-bottom: 0.2rem; }
-    .project-card-body h3 { font-size: 0.92rem; margin-bottom: 0.25rem; }
-    .project-card-body p { font-size: 0.8rem; color: var(--muted); }
-    .project-card-links { padding: 0.6rem 1rem 1rem; display: flex; gap: 0.45rem; flex-wrap: wrap; }
-    .project-card-links a {
-      display: inline-flex; align-items: center; gap: 0.35rem;
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.01em;
-      padding: 0.35rem 0.9rem; border-radius: 999px; text-decoration: none;
-      border: 1px solid var(--border); color: var(--muted); background: var(--bg-alt);
-      transition: border-color 0.15s, color 0.15s, background 0.15s, transform 0.1s;
-    }
-    .project-card-links a:hover {
-      border-color: var(--accent); color: var(--accent);
-      background: color-mix(in srgb, var(--accent) 8%, var(--card-bg));
-      transform: translateY(-1px);
-    }
-    .project-card-links a svg { flex-shrink: 0; }
+    /* Dated rows: education, awards, service */
+    .row { display: grid; grid-template-columns: 10.5rem 1fr; gap: 0.25rem 1rem; margin-bottom: 1.1rem; }
+    .row:last-child { margin-bottom: 0; }
+    .row-date { font-size: 0.875rem; color: var(--muted); padding-top: 0.1rem; }
+    .row p + p { margin-top: 0.1rem; }
 
-    /* Other sections */
-    .other-section { padding: 2.5rem 2rem; }
-    .other-section.alt { background: var(--bg-alt); }
-    .other-section h2 { font-size: 1.6rem; margin-bottom: 1rem; }
+    /* Research */
+    .project { margin-top: 1rem; }
+    .project ul, .row ul { font-size: 0.95rem; }
 
-    /* === SKILLS: Skill Map === */
-    .skill-map-wrap { display: flex; align-items: stretch; gap: 0.5rem; }
-    .skill-map-y-label { display: none; }
-    .skill-map-inner { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
-    .skill-map-grid { display: grid; grid-template-columns: 90px 1fr; gap: 0.6rem 0.8rem; align-items: center; }
-    .skill-map-row-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); text-align: right; padding-right: 0.5rem; }
-    .skill-map-row {
-      display: flex; align-items: center; gap: 0.5rem;
-      background: var(--bg-alt); border-radius: 999px;
-      padding: 0.3rem 0.5rem; border: 1px solid var(--border);
-      position: relative;
-    }
-    .skill-bubble {
-      padding: 0.28rem 0.8rem; border-radius: 999px;
-      font-size: 0.75rem; white-space: nowrap; cursor: default;
-      background: color-mix(in srgb, var(--accent) calc(var(--prof) * 22%), var(--card-bg));
-      border: 1.5px solid color-mix(in srgb, var(--accent) calc(var(--prof) * 50%), var(--border));
-      color: var(--text);
-      opacity: calc(0.55 + var(--prof) * 0.45);
-      transition: transform 0.15s, opacity 0.15s;
-      margin-left: calc(var(--prof) * 8px);
-    }
-    .skill-bubble:hover { transform: scale(1.08); opacity: 1; }
-    .skill-map-x-axis { display: none; }
+    /* Publications and presentations */
+    .pub { margin-bottom: 0.9rem; font-size: 0.95rem; }
+    .pub:last-child { margin-bottom: 0; }
+    .pub-title { font-weight: 600; }
+    .pub-note { color: var(--muted); }
+    .photos { display: flex; gap: 0.6rem; margin-top: 0.7rem; }
+    .photos img { flex: 1; min-width: 0; width: 50%; height: 170px; object-fit: cover; border-radius: 6px; display: block; }
 
-    /* About layout */
-    .about-layout { display: flex; align-items: flex-start; gap: 2.5rem; }
-    .about-text { flex: 1; }
-    .about-photo-wrap { flex-shrink: 0; }
-    .about-photo {
-      width: 200px; height: 260px;
-      object-fit: cover; object-position: top center;
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
-      display: block;
-    }
-    html[data-theme="dark"] .about-photo { box-shadow: 0 8px 32px rgba(0,0,0,0.45); }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem; }
-    .card { background: var(--card-bg); border-radius: 14px; padding: 1.2rem; border: 1px solid var(--border); box-shadow: var(--shadow); }
-    .card h3 { margin-top: 0; font-size: 0.98rem; }
-    .card-meta { font-size: 0.77rem; color: var(--muted); margin-bottom: 0.35rem; }
-    .timeline { border-left: 2px solid var(--border); padding-left: 1.3rem; margin-top: 0.8rem; }
-    .tl-item { position: relative; margin-bottom: 1.4rem; }
-    .tl-dot { position: absolute; left: -1.55rem; top: 0.3rem; width: 11px; height: 11px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent); }
-    .tl-content h3 { margin: 0 0 0.1rem; font-size: 0.97rem; }
-    .tl-content ul { padding-left: 1rem; margin: 0.3rem 0 0; }
-    .tl-content li { font-size: 0.85rem; color: var(--text); }
-    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
-    .contact-card { display: flex; align-items: center; gap: 0.85rem; padding: 1rem 1.2rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); text-decoration: none; color: var(--text); transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s; }
-    .contact-card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
-    html[data-theme="dark"] .contact-card:hover { box-shadow: 0 12px 28px rgba(0,0,0,0.45); }
-    .contact-card-icon { width: 40px; height: 40px; border-radius: 10px; background: color-mix(in srgb, var(--accent) 12%, var(--bg-alt)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent); }
-    .contact-card-info { display: flex; flex-direction: column; }
-    .contact-card-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.1rem; }
-    .contact-card-value { font-size: 0.88rem; font-weight: 600; }
+    /* Projects */
+    .proj { display: grid; grid-template-columns: 150px 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
+    .proj:last-child { margin-bottom: 0; }
+    .proj img { width: 150px; height: 100px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border); display: block; }
+    .proj p { font-size: 0.95rem; }
+    .proj-links { font-size: 0.875rem; margin-top: 0.2rem; }
+    .proj-links a + a::before { content: "·"; color: var(--muted); display: inline-block; margin-right: 0.4rem; }
 
-    /* === EMAIL MODAL === */
-    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(4px); z-index: 100; align-items: center; justify-content: center; padding: 1rem; }
-    .modal-overlay.open { display: flex; }
-    .modal { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; box-shadow: 0 24px 64px rgba(0,0,0,0.25); width: 100%; max-width: 480px; padding: 2rem; position: relative; animation: modal-in 0.2s ease; }
-    @keyframes modal-in { from { opacity: 0; transform: translateY(12px) scale(0.97); } to { opacity: 1; transform: none; } }
-    .modal-close { position: absolute; top: 1rem; right: 1rem; width: 28px; height: 28px; border-radius: 999px; border: 1px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; line-height: 1; }
-    .modal-close:hover { color: var(--text); border-color: var(--text); }
-    .modal h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
-    .modal-sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.4rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.9rem; }
-    .form-group label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
-    .form-group input, .form-group textarea { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px; padding: 0.6rem 0.85rem; font-size: 0.88rem; color: var(--text); font-family: inherit; outline: none; transition: border-color 0.15s; resize: none; }
-    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
-    .modal-actions { display: flex; gap: 0.6rem; margin-top: 1.2rem; }
-    .modal-actions .btn { flex: 1; justify-content: center; }
+    /* Skills */
+    .skill { display: grid; grid-template-columns: 10.5rem 1fr; gap: 0.25rem 1rem; margin-bottom: 0.75rem; font-size: 0.95rem; }
+    .skill:last-child { margin-bottom: 0; }
+    .skill strong { font-weight: 600; font-size: 0.875rem; }
 
-    /* === PUBLICATIONS & TALKS === */
-    .pub-list { display: flex; flex-direction: column; gap: 0.55rem; }
-    .pub-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 11px; padding: 0.78rem 1.05rem; box-shadow: var(--shadow); transition: transform 0.15s, box-shadow 0.15s; }
-    .pub-item:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,0.1); }
-    html[data-theme="dark"] .pub-item:hover { box-shadow: 0 10px 22px rgba(0,0,0,0.4); }
-    .pub-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.32rem; }
-    .pub-badge { font-size: 0.63rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.15rem 0.55rem; border-radius: 999px; }
-    .pub-badge-journal { background: color-mix(in srgb, var(--accent) 12%, var(--card-bg)); color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border)); }
-    .pub-badge-talk { background: color-mix(in srgb, #2d7bb5 12%, var(--card-bg)); color: #2d7bb5; border: 1px solid color-mix(in srgb, #2d7bb5 28%, var(--border)); }
-    .pub-badge-award { background: color-mix(in srgb, var(--accent-warm) 13%, var(--card-bg)); color: var(--accent-warm); border: 1px solid color-mix(in srgb, var(--accent-warm) 28%, var(--border)); }
-    html[data-theme="dark"] .pub-badge-talk { color: #63b3ed; }
-    .pub-year { font-size: 0.71rem; color: var(--muted); margin-left: auto; }
-    .pub-title { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.15rem; line-height: 1.4; }
-    .pub-venue { font-size: 0.76rem; color: var(--muted); }
-    .pub-photos { display: flex; gap: 0.55rem; margin-top: 0.7rem; }
-    .pub-photo { flex: 1; border-radius: 8px; object-fit: cover; height: 112px; border: 1px solid var(--border); display: block; }
-    @media (max-width: 860px) { .pub-photos { flex-direction: column; } .pub-photo { height: 155px; width: 100%; } }
+    footer { max-width: 800px; margin: 0 auto; padding-top: 1rem; font-size: 0.8rem; color: var(--muted); }
 
-    .site-footer { border-top: 1px solid var(--border); padding: 1rem 2rem; background: var(--bg-alt); font-size: 0.78rem; color: var(--muted); }
-
-    /* Responsive */
-    @media (max-width: 860px) {
-      .sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); flex-direction: column; gap: 1rem; padding: 0 0 1.5rem; }
-      .sidebar-banner { width: 100%; margin: 0; height: 170px; }
-      .sidebar-info { padding: 0.9rem 1.5rem 0.5rem; }
-      .sidebar-top { padding: 0 1.5rem; }
-      .sidebar-btns, .sidebar-nav, .social-links { width: 100%; }
-      .sidebar-nav { padding: 0.8rem 1.5rem 0; }
-      .main-content { margin-left: 0; }
-      .about-layout { flex-direction: column; gap: 1.5rem; }
-      .about-photo-wrap { width: 100%; display: flex; justify-content: center; }
-      .about-photo { width: 60%; height: auto; aspect-ratio: 3/4; border-radius: 12px; }
-      .skill-map-grid { grid-template-columns: 1fr; gap: 0.4rem; }
-      .skill-map-row-label { text-align: left; padding-right: 0; padding-bottom: 0.1rem; }
-      .skill-map-row { flex-wrap: wrap; border-radius: 12px; }
-      .skill-bubble { white-space: normal; margin-left: 0 !important; }
-      .content-nav-sub { display: none; }
-      .content-nav { padding: 0.6rem 1.2rem; }
+    /* Responsive: the menu moves to a top bar on small screens */
+    @media (max-width: 760px) {
+      html { scroll-padding-top: 4.75rem; }
+      .rail {
+        position: sticky; z-index: 5;
+        width: 100%; height: auto;
+        background: var(--bg);
+        border-right: none; border-bottom: 1px solid var(--border);
+        padding: 0.6rem 1rem;
+        flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.15rem 1rem;
+        overflow: visible;
+      }
+      .rail-name { order: 1; }
+      .theme-toggle { order: 2; margin: 0 0 0 auto; }
+      .rail-nav { order: 3; width: 100%; flex-direction: row; gap: 1rem; overflow-x: auto; scrollbar-width: none; }
+      .rail-nav a { white-space: nowrap; }
+      main { margin-left: 0; padding: 1.75rem 1rem 1.5rem; }
+      .about { flex-direction: column-reverse; gap: 1.25rem; }
+      .about-photo { width: 170px; height: 170px; }
+      .row, .skill { grid-template-columns: 1fr; }
+      .proj { grid-template-columns: 1fr; gap: 0.6rem; }
+      .proj img { width: 100%; height: 170px; }
+      .photos img { height: 120px; }
     }
   </style>
 </head>
 <body>
-  <!-- === SIDEBAR === -->
-  <aside class="sidebar">
-    <div class="sidebar-banner"></div>
-    <div class="sidebar-info">
-      <p class="profile-name">Minju <span class="accent">Kim</span></p>
-      <p class="profile-role">Research Data Scientist</p>
-      <p class="profile-bio">Computer Vision &amp; Machine Learning &nbsp;·&nbsp; Cognitive Development Lab &nbsp;·&nbsp; MS Data Science</p>
-    </div>
-    <div class="sidebar-top">
-      <div class="sidebar-btns">
-        <a href="https://drive.google.com/file/d/1I46Orb2nMzGINgb31lgrYx2MhkHUhdre/view?usp=sharing" class="btn btn-p" target="_blank">Download Resume</a>
-        <a href="#contact" class="btn btn-g">Get In Touch</a>
-      </div>
-      <div class="social-links">
-        <a href="https://github.com/minjukim023" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/minjukim023/" target="_blank">LinkedIn</a>
-        <button onclick="document.getElementById('email-modal').classList.add('open')" class="social-email-btn" aria-label="Send Email">✉️</button>
-      </div>
-    </div>
-    <nav class="sidebar-nav">
-      <a href="#publications">Publications</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
+  <!-- === LEFT MENU === -->
+  <aside class="rail">
+    <a href="#about" class="rail-name">Minju Kim</a>
+    <nav class="rail-nav" aria-label="Sections">
+      <a href="#about">About</a>
       <a href="#education">Education</a>
-      <a href="#about">Skills</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#presentations">Presentations</a>
+      <a href="#honors">Honors</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#service">Service</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button>
   </aside>
 
-  <!-- === MAIN CONTENT === -->
-  <div class="main-content">
-    <div class="content-nav">
-      <span>Portfolio</span>
-      <span class="content-nav-sub">Computer Vision · Cognitive Science · AI Research</span>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+  <main>
+    <div class="wrap">
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="about">
+          <div class="about-text">
+            <h1>Minju Kim</h1>
+            <p class="about-role">Research Data Scientist, Cognitive Development Lab, Indiana University Bloomington</p>
+            <p>I use computer vision to study what infants actually see. Working with Linda B. Smith, I analyze large-scale egocentric video from head-mounted cameras to measure how the visual complexity of early experience changes with age.</p>
+            <p>I also collaborate on memory mechanisms in spiking neural networks for neuromorphic computing. I hold an M.S. in Data Science from Indiana University and a B.B.A. from Konkuk University, and I am applying to PhD programs.</p>
+            <div class="links">
+              <a href="#publications" class="btn btn-p">Publications</a>
+              <a href="https://drive.google.com/file/d/1I46Orb2nMzGINgb31lgrYx2MhkHUhdre/view?usp=sharing" class="btn" target="_blank" rel="noopener">Resume</a>
+              <a href="https://github.com/minjukim023" class="btn" target="_blank" rel="noopener">GitHub</a>
+              <a href="https://www.linkedin.com/in/minjukim023/" class="btn" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="mailto:minjukim023@gmail.com" class="btn">Email</a>
+            </div>
+          </div>
+          <img src="assets/profile1.jpeg" alt="Portrait of Minju Kim" class="about-photo"/>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education">
+        <h2>Education</h2>
+        <div class="row">
+          <p class="row-date">Aug. 2023 – May 2025</p>
+          <div>
+            <h3>M.S. in Data Science (Applied Data Science)</h3>
+            <p>Luddy School of Informatics, Computing, and Engineering, Indiana University, Bloomington, IN</p>
+            <p class="meta">GPA: 3.8/4.0</p>
+            <p class="meta">Relevant courses: Machine Learning, Computer Vision, Natural Language Processing, Applied Databases, Statistics, Scientific Visualization, Information Visualization, Data Mining, Social Media Mining, Independent Study</p>
+          </div>
+        </div>
+        <div class="row">
+          <p class="row-date">Mar. 2018 – Feb. 2021</p>
+          <div>
+            <h3>B.B.A. in Business Administration</h3>
+            <p>Konkuk University, Seoul, South Korea</p>
+            <p class="meta">GPA: 3.72/4.5</p>
+          </div>
+        </div>
+        <div class="row">
+          <p class="row-date">Mar. 2019 – Aug. 2019</p>
+          <div>
+            <h3>Exchange Student (International Business)</h3>
+            <p>Technische Hochschule Nürnberg Georg Simon Ohm, Nürnberg, Germany</p>
+          </div>
+        </div>
+        <div class="row">
+          <p class="row-date">Mar. 2016 – Feb. 2018</p>
+          <div>
+            <h3>Undergraduate Studies (East Asian Studies &amp; Logistics)</h3>
+            <p>Sungkyul University, Anyang, South Korea</p>
+            <p class="meta">GPA: 4.41/4.5 (72 credits completed). Transferred to Konkuk University.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESEARCH -->
+      <section id="research">
+        <h2>Research Experience</h2>
+        <div class="row">
+          <p class="row-date">2024 – Present</p>
+          <div>
+            <h3>Cognitive Development Lab, Indiana University Bloomington</h3>
+            <p>PI: Linda B. Smith</p>
+            <p class="meta">Research Data Scientist (May 2025 – Present)</p>
+            <p class="meta">Research Data Analyst, Part-time (Aug. 2024 – May 2025)</p>
+            <p class="meta">Faculty Assistance in Data Science (FADS) Fellowship (Summer 2024)</p>
+            <div class="project">
+              <h3>Multi-level Visual Clutter in Infants' Egocentric Input (first-author)</h3>
+              <ul>
+                <li>Built a pipeline to quantify visual clutter across ~500,000 head-camera frames from 40 infants (1–26 months) at three levels of visual complexity: edge density (low-level), Feature Congestion (mid-level; Rosenholtz et al., 2007), and SAM2-based segment counts as an object-level proxy for proto-objects.</li>
+                <li>Found that infants' visual input is strongly biased toward low clutter, that this bias weakens gradually with age, and that clutter is multidimensional, with edge density nearly unrelated to object-level segment count.</li>
+                <li>Presented as an oral talk at VSS 2026 (Elsevier/Vision Research Travel Award); first-author manuscript in preparation.</li>
+              </ul>
+            </div>
+            <div class="project">
+              <h3>Infant Visual Statistics Across U.S. and Indian Communities</h3>
+              <ul>
+                <li>Analyzed natural image statistics of infants' egocentric visual input across U.S. and Indian communities; presented first-author poster at the Midwest Computer Vision Workshop (2024).</li>
+                <li>Contributed to a manuscript led by Philip McAdams on developmental changes in the edge statistics of everyday infant visual input (under review, Communications Psychology).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <p class="row-date">2025 – Present</p>
+          <div>
+            <h3>Cross-Modal Neuromorphic Computing Collaboration</h3>
+            <p>Multi-institution research collaboration</p>
+            <ul>
+              <li>Ran experiments comparing memory mechanisms (e.g., Hopfield networks, hierarchical gating) in spiking neural networks across visual (N-MNIST) and auditory (SHD) neuromorphic data in a multi-institution research team.</li>
+              <li>Contributed to manuscript writing, proofreading, and architecture figures for an IEEE Computer article (in press) and a WiML @ NeurIPS 2026 poster.</li>
+            </ul>
+          </div>
+        </div>
+        <h3 class="subhead">Other Experience</h3>
+        <div class="row">
+          <p class="row-date">May – Jun. 2023</p>
+          <div>
+            <h3>Linguistic Data Annotator, Apple Siri Project</h3>
+            <p>BeyondTech, Seoul, South Korea</p>
+            <ul>
+              <li>Evaluated and annotated 370+ language model training samples daily.</li>
+              <li>Designed culturally nuanced Korean dialogues to improve AI conversational quality.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PUBLICATIONS -->
+      <section id="publications">
+        <h2>Publications</h2>
+        <h3 class="subhead">Accepted / In Press</h3>
+        <p class="pub">Effiong, B., Rehman, J., Roy, S., <strong>Kim, M.</strong>, Tseng, C.-Y., &amp; Nkrumah, I. (in press). <span class="pub-title">Modality-dependent memory mechanisms in cross-modal neuromorphic computing.</span> <em>IEEE Computer.</em></p>
+        <h3 class="subhead">Under Review</h3>
+        <p class="pub">McAdams, P., Colwell, A., <strong>Kim, M.</strong>, &amp; Smith, L. B. (under review). <span class="pub-title">Developmental changes in the edge statistics of everyday infant visual input across two communities.</span> Manuscript submitted to <em>Communications Psychology.</em></p>
+        <h3 class="subhead">In Preparation</h3>
+        <p class="pub"><strong>Kim, M.</strong>, McAdams, P., Colwell, A., &amp; Smith, L. B. (in preparation). <span class="pub-title">The visual world of infants and toddlers is not cluttered.</span></p>
+      </section>
+
+      <!-- PRESENTATIONS -->
+      <section id="presentations">
+        <h2>Presentations</h2>
+        <h3 class="subhead">Conference Talks</h3>
+        <div class="pub">
+          <p><strong>Kim, M.</strong> (2026, May 17). <span class="pub-title">Developmental changes in visual clutter in infants' and toddlers' visual worlds</span> [Oral presentation]. Vision Sciences Society (VSS) Annual Meeting, St. Pete Beach, FL, United States.</p>
+          <div class="photos">
+            <img src="assets/present1.png" alt="Minju Kim giving a talk at VSS 2026" loading="lazy"/>
+            <img src="assets/present2.jpg" alt="Minju Kim presenting at VSS 2026" loading="lazy"/>
+          </div>
+        </div>
+        <h3 class="subhead">Posters</h3>
+        <p class="pub">Effiong, B., <strong>Kim, M.</strong>, Thasin, M., Rehman, J., Roy, S., Tan, V., &amp; Nkrumah, I. (2026, December). <span class="pub-title">Modality-adaptive memory gating with embedding replay for continual learning in spiking neural networks</span> [Poster presentation accepted]. Women in Machine Learning (WiML) Workshop, co-located with NeurIPS 2026, Atlanta, GA, United States.</p>
+        <p class="pub">McAdams, P., Colwell, A., <strong>Kim, M.</strong>, &amp; Smith, L. B. (2026, May). <span class="pub-title">Infant egocentric scene statistics are simpler than adult egocentric and canonical natural scenes</span> [Poster presentation]. Vision Sciences Society (VSS) Annual Meeting, St. Pete Beach, FL, United States.</p>
+        <p class="pub"><strong>Kim, M.</strong>, &amp; Smith, L. B. (2024, September 16–17). <span class="pub-title">Natural statistics of visual experience of infancy: US &amp; India</span> [Poster presentation]. Midwest Computer Vision Workshop, Indiana University Bloomington, Bloomington, IN, United States. <a href="https://drive.google.com/file/d/1zU25AT8OWRiKEsFhsdlBtwIfIKDT_RSm/view" target="_blank" rel="noopener">Poster</a></p>
+      </section>
+
+      <!-- HONORS -->
+      <section id="honors">
+        <h2>Honors and Awards</h2>
+        <div class="row">
+          <p class="row-date">2026</p>
+          <p><strong>Elsevier/Vision Research Travel Award</strong>, Vision Sciences Society (VSS)</p>
+        </div>
+        <div class="row">
+          <p class="row-date">2025</p>
+          <p><strong>Second Place, Case 4 (Multi-Agent Systems)</strong>, 2025 Luddy Hackathon, Luddy School of Informatics, Computing, and Engineering, Indiana University Bloomington</p>
+        </div>
+        <div class="row">
+          <p class="row-date">2024</p>
+          <p><strong>Faculty Assistance in Data Science (FADS) Fellowship</strong>, Indiana University Bloomington. Competitively selected for a faculty-led research project.</p>
+        </div>
+      </section>
+
+      <!-- TEACHING -->
+      <section id="teaching">
+        <h2>Teaching and Mentoring</h2>
+        <div class="row">
+          <p class="row-date">Spring 2026</p>
+          <div>
+            <h3>Research Mentor, CSCI-B657 Computer Vision Course Project</h3>
+            <p>Luddy School of Informatics, Computing, and Engineering, Indiana University</p>
+            <ul>
+              <li>Co-advised (with Linda B. Smith) a three-student team developing an egocentric infant hand-detection and object-interaction pipeline using Cognitive Development Lab head-camera data.</li>
+              <li>Met regularly with the team to set project direction, provided lab egocentric video data, advised on pipeline design (MediaPipe-based auto-labeling, CVAT annotation correction, YOLOv8 hand detection, DINOv2 one-shot object classification), and gave feedback on the final poster.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <p class="row-date">Summer 2024</p>
+          <div>
+            <h3>Associate Instructor, CSCI-C 102: Great Ideas in Computing</h3>
+            <p>Luddy School of Informatics, Computing, and Engineering, Indiana University</p>
+            <ul>
+              <li>Instructed 30+ students through hands-on programming labs covering Python, Arduino, HTML/CSS, and Java, developing foundational programming and computational thinking skills.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects">
+        <h2>Selected Projects</h2>
+        <div class="proj">
+          <img src="assets/EvacSim.png" alt="EvacSim evacuation simulation" loading="lazy"/>
+          <div>
+            <h3>EvacSim: Evacuation Simulation Using Multi-Agent Systems</h3>
+            <p>Real-time evacuation tool with 9 autonomous agents (8 drones and 1 vehicle), using Unity AI NavMesh and a React frontend with WebSocket streaming. Second place, 2025 Luddy Hackathon.</p>
+            <p class="proj-links"><a href="https://github.com/MinjuKim023/Evacuation-Simulation" target="_blank" rel="noopener">GitHub</a> <a href="https://www.youtube.com/watch?v=hO1vGT5lekk" target="_blank" rel="noopener">Demo</a></p>
+          </div>
+        </div>
+        <div class="proj">
+          <img src="assets/algae.jpg" alt="Microscope image of algae" loading="lazy"/>
+          <div>
+            <h3>Algae Identification Towards Automated Classification</h3>
+            <p>Applied ResNet and U-Net to identify 12 algae species for the City of Bloomington, supporting Lake Monroe water quality monitoring.</p>
+            <p class="proj-links"><a href="https://github.com/MinjuKim023/Microscopic-Algae-Classification" target="_blank" rel="noopener">GitHub</a> <a href="https://github.com/MinjuKim023/Microscopic-Algae-Classification/blob/main/Algae_final%20paper.pdf" target="_blank" rel="noopener">Report</a></p>
+          </div>
+        </div>
+        <div class="proj">
+          <img src="assets/heartattack.png" alt="Heart attack risk analysis figure" loading="lazy"/>
+          <div>
+            <h3>Bridging the Gender Gap in Heart Attack</h3>
+            <p>Ensemble models and feature importance for gender-related risk differences.</p>
+            <p class="proj-links"><a href="https://github.com/MinjuKim023/Bridging-the-Gender-Gap-in-Heart-Attack" target="_blank" rel="noopener">GitHub</a> <a href="https://github.com/MinjuKim023/Bridging-the-Gender-Gap-in-Heart-Attack/blob/main/Final%20Report/final-mk159-lli4-lc51.pdf" target="_blank" rel="noopener">Report</a></p>
+          </div>
+        </div>
+        <div class="proj">
+          <img src="assets/asteroid.png" alt="Visualization of an asteroid striking deep water" loading="lazy"/>
+          <div>
+            <h3>When Asteroids Strike: Deep Water Collisions</h3>
+            <p>Visualized asteroid collision scenarios with ParaView and spatial data.</p>
+            <p class="proj-links"><a href="https://collectome.rt.iu.edu/frontend/exhibits/6759eef728048" target="_blank" rel="noopener">Demo</a> <a href="https://drive.google.com/file/d/1C46P9J9lWNxvSac9iEq4x1_S-6zsJEjS/view" target="_blank" rel="noopener">Slides</a></p>
+          </div>
+        </div>
+        <div class="proj">
+          <img src="assets/baby.png" alt="Infant head-camera image" loading="lazy"/>
+          <div>
+            <h3>Natural Statistics of Infant Visual Experience</h3>
+            <p>Image statistics from infant head cameras across the U.S. and India.</p>
+            <p class="proj-links"><a href="https://drive.google.com/file/d/1zU25AT8OWRiKEsFhsdlBtwIfIKDT_RSm/view" target="_blank" rel="noopener">Poster</a></p>
+          </div>
+        </div>
+        <div class="proj">
+          <img src="assets/dashboard.png" alt="Power BI dashboard" loading="lazy"/>
+          <div>
+            <h3>Creating a Dashboard for Usage of the HRA</h3>
+            <p>Power BI dashboard for Health Risk Assessment usage patterns.</p>
+            <p class="proj-links"><a href="https://drive.google.com/file/d/1NE9Km2rfP0q0T4n09CsXS3N6Fnq6SHWh/view" target="_blank" rel="noopener">Report</a> <a href="https://drive.google.com/file/d/1Dcbzhdqx4l7pcvIKG3XoSQyjtEWKjTD7/view" target="_blank" rel="noopener">Demo</a></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <h2>Skills</h2>
+        <div class="skill"><strong>Programming &amp; Tools</strong><p>Python, R, SQL, MATLAB, HTML/CSS, Git, Docker, Jupyter, NumPy, Pandas, OpenCV, Matplotlib, Seaborn, AWS, GCP</p></div>
+        <div class="skill"><strong>Deep Learning &amp; Computer Vision</strong><p>PyTorch, TensorFlow, Scikit-learn, CNNs (ResNet, U-Net), object detection, image segmentation, image classification, transfer learning, data augmentation, feature extraction, NLP, LLMs</p></div>
+        <div class="skill"><strong>Research Methods</strong><p>Experimental design, model evaluation and benchmarking, cross-population analysis, large-scale egocentric image and video analysis, multimodal data processing, visual complexity analysis, scientific visualization (ParaView)</p></div>
+        <div class="skill"><strong>Data &amp; Visualization</strong><p>MongoDB, Snowflake, Neo4j, Cassandra, Tableau, Power BI, Gephi</p></div>
+      </section>
+
+      <!-- SERVICE -->
+      <section id="service">
+        <h2>Service and Memberships</h2>
+        <h3 class="subhead">Manuscript Reviewing</h3>
+        <div class="row">
+          <p class="row-date">2026</p>
+          <p>Reviewer, NeurIPS 2026 Workshop on Continual World Models</p>
+        </div>
+        <h3 class="subhead">Other Service and Activities</h3>
+        <div class="row">
+          <p class="row-date">2026</p>
+          <div>
+            <p>Judge, Research Poster Competition, Center of Excellence for Women &amp; Technology (CEWIT), Indiana University Bloomington</p>
+            <p class="meta">Evaluated student research posters in Health and Behavioral Sciences and Technology &amp; Computing Sciences.</p>
+          </div>
+        </div>
+        <div class="row">
+          <p class="row-date">2024</p>
+          <p>Student Volunteer, American Association of Teachers of Korean (AATK) Conference, Indiana University Bloomington</p>
+        </div>
+        <div class="row">
+          <p class="row-date">2023 – Present</p>
+          <p>Mentee, Center of Excellence for Women &amp; Technology (CEWIT), Indiana University Bloomington</p>
+        </div>
+        <h3 class="subhead">Professional Memberships</h3>
+        <div class="row">
+          <p class="row-date">2026</p>
+          <p>Korean-American Scientists and Engineers Association (KSEA)</p>
+        </div>
+        <div class="row">
+          <p class="row-date">2026</p>
+          <p>Korean Women in Science and Engineering (KWiSE), Indiana Chapter</p>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:minjukim023@gmail.com">minjukim023@gmail.com</a></p>
+        <p>GitHub: <a href="https://github.com/minjukim023" target="_blank" rel="noopener">github.com/minjukim023</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/minjukim023/" target="_blank" rel="noopener">linkedin.com/in/minjukim023</a></p>
+      </section>
     </div>
 
-    <!-- PUBLICATIONS & TALKS -->
-    <section id="publications" class="other-section alt">
-      <h2>Publications &amp; Talks</h2>
-      <div class="pub-list">
-
-        <div class="pub-item">
-          <div class="pub-header">
-            <span class="pub-badge pub-badge-journal">Journal</span>
-            <span class="pub-year">2026 · In Press</span>
-          </div>
-          <p class="pub-title">"Modality-Dependent Memory Mechanisms in Cross-Modal Neuromorphic Computing"</p>
-          <p class="pub-venue">IEEE Computer &nbsp;·&nbsp; Special Issue on Neuromorphic Computing &nbsp;·&nbsp; Accepted</p>
-        </div>
-
-        <div class="pub-item">
-          <div class="pub-header">
-            <span class="pub-badge pub-badge-talk">Talk</span>
-            <span class="pub-year">May 2026</span>
-          </div>
-          <p class="pub-title">"Developmental Changes in Visual Clutter in Infants' and Toddlers' Visual Worlds"</p>
-          <p class="pub-venue">Vision Sciences Society (VSS) Annual Meeting &nbsp;·&nbsp; Selected Talk Session</p>
-          <div class="pub-photos">
-            <img src="assets/present1.png" alt="VSS 2026 Talk" class="pub-photo"/>
-            <img src="assets/present2.jpg" alt="VSS 2026 Presentation" class="pub-photo"/>
-          </div>
-        </div>
-
-        <div class="pub-item">
-          <div class="pub-header">
-            <span class="pub-badge pub-badge-award">Grant</span>
-            <span class="pub-year">2026</span>
-          </div>
-          <p class="pub-title">VSS Travel Grant</p>
-          <p class="pub-venue">Vision Sciences Society</p>
-        </div>
-
-        <div class="pub-item">
-          <div class="pub-header">
-            <span class="pub-badge pub-badge-award">Award</span>
-            <span class="pub-year">2025</span>
-          </div>
-          <p class="pub-title">🏆 2nd Place — Luddy Hackathon</p>
-          <p class="pub-venue">EvacSim: Real-time Multi-Agent Evacuation Simulation &nbsp;·&nbsp; Indiana University</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="projects-section">
-      <h2>Projects</h2>
-      <p class="section-intro">Computer vision, scientific visualization, and applied data science.</p>
-      <div class="proj-grid">
-        <div class="project-card">
-          <img src="assets/EvacSim.png" alt="EvacSim Evacuation Simulation" class="project-card-img"/>
-          <div class="project-card-body"><p class="meta">#MultiAgentSystems #Unity · 🏆 2nd Place, Luddy Hackathon 2025</p><h3>EvacSim: Evacuation Simulation using MAS</h3><p>Real-time evacuation tool with 9 autonomous agents — 8 drones and 1 vehicle — using Unity AI NavMesh and React frontend with WebSocket streaming.</p></div>
-          <div class="project-card-links">
-            <a href="https://github.com/MinjuKim023/Evacuation-Simulation" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
-            <a href="https://www.youtube.com/watch?v=hO1vGT5lekk" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>Demo</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img src="assets/algae.jpg" alt="Algae Identification Towards Automated Classification" class="project-card-img"/>
-          <div class="project-card-body"><p class="meta">#ComputerVision #WaterQuality</p><h3>Algae Identification Towards Automated Classification</h3><p>Applied ResNet and U-Net to identify 12 algae species for the City of Bloomington, improving Lake Monroe water quality monitoring.</p></div>
-          <div class="project-card-links">
-            <a href="https://github.com/MinjuKim023/Microscopic-Algae-Classification" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
-            <a href="https://github.com/MinjuKim023/Microscopic-Algae-Classification/blob/main/Algae_final%20paper.pdf" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Report</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img src="assets/heartattack.png" alt="Bridging the Gender Gap in Heart Attack" class="project-card-img"/>
-          <div class="project-card-body"><p class="meta">#Ensemble #HeartAttack</p><h3>Bridging the Gender Gap in Heart Attack</h3><p>Ensemble models and feature importance for gender-related risk differences.</p></div>
-          <div class="project-card-links">
-            <a href="https://github.com/MinjuKim023/Bridging-the-Gender-Gap-in-Heart-Attack" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
-            <a href="https://github.com/MinjuKim023/Bridging-the-Gender-Gap-in-Heart-Attack/blob/main/Final%20Report/final-mk159-lli4-lc51.pdf" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Report</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img src="assets/asteroid.png" alt="When Asteroids Strike: Deep Water Collisions" class="project-card-img"/>
-          <div class="project-card-body"><p class="meta">#Paraview #Sketchfab</p><h3>When Asteroids Strike: Deep Water Collisions</h3><p>Visualized asteroid collision scenarios with ParaView and spatial data.</p></div>
-          <div class="project-card-links">
-            <a href="https://collectome.rt.iu.edu/frontend/exhibits/6759eef728048" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>Demo</a>
-            <a href="https://drive.google.com/file/d/1C46P9J9lWNxvSac9iEq4x1_S-6zsJEjS/view" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Slides</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img src="assets/baby.png" alt="Natural Statistics of Infant Visual Experience" class="project-card-img"/>
-          <div class="project-card-body"><p class="meta">#ComputerVision #FeatureCongestion</p><h3>Natural Statistics of Infant Visual Experience</h3><p>Image statistics from infant head cameras across US & India.</p></div>
-          <div class="project-card-links">
-            <a href="https://drive.google.com/file/d/1zU25AT8OWRiKEsFhsdlBtwIfIKDT_RSm/view" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Poster</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img src="assets/dashboard.png" alt="Creating a Dashboard for Usage of the HRA" class="project-card-img"/>
-          <div class="project-card-body"><p class="meta">#PowerBI #InfoViz</p><h3>Creating a Dashboard for Usage of the HRA</h3><p>Power BI dashboard for Health Risk Assessment usage patterns.</p></div>
-          <div class="project-card-links">
-            <a href="https://drive.google.com/file/d/1NE9Km2rfP0q0T4n09CsXS3N6Fnq6SHWh/view" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Report</a>
-            <a href="https://drive.google.com/file/d/1Dcbzhdqx4l7pcvIKG3XoSQyjtEWKjTD7/view" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>Demo</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="other-section alt">
-      <h2>Experience</h2>
-      <div class="timeline">
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-content">
-          <h3>Research Data Scientist</h3><p class="card-meta">Cognitive Development Lab, IU · May 2024 – Present</p>
-          <ul>
-            <li>Analyzing 500,000+ egocentric head-camera images/videos from infants aged 4–30 months to investigate how visual input changes by age and impacts early visual development.</li>
-            <li>Developing computer vision pipelines using feature-congestion scores, image segmentation models, and semantic measures to quantify visual complexity in infant environments.</li>
-            <li>Collaborating with cognitive development researchers and AI engineers to translate CV findings into actionable insights, bridging AI/ML with developmental psychology.</li>
-          </ul>
-        </div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-content">
-          <h3>Associate Instructor</h3><p class="card-meta">Luddy School of Informatics, IU · Jun–Jul 2024</p>
-          <ul>
-            <li>Instructed over 30 students through hands-on lab sessions covering Python, Arduino, HTML, CSS, Java, and EarSketch, fostering foundational problem-solving skills.</li>
-            <li>Conducted daily office hours to assist students in overcoming coding challenges and building strong computational thinking abilities.</li>
-          </ul>
-        </div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-content">
-          <h3>Linguistic Data Annotator – Apple Siri Project</h3><p class="card-meta">BeyondTech · Seoul, Korea · May–Jun 2023</p>
-          <ul>
-            <li>Evaluated and annotated 370+ language model training samples daily, developing understanding of how training data quality impacts AI system behavior and output alignment.</li>
-            <li>Designed culturally nuanced Korean dialogues to improve AI conversational quality, contributing to alignment between model outputs and human communication norms.</li>
-          </ul>
-        </div></div>
-      </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section id="education" class="other-section">
-      <h2>Education</h2>
-      <div class="cards">
-        <div class="card">
-          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;">
-            <span style="font-size:1.1rem;">🇺🇸</span>
-            <h3 style="margin:0;">Indiana University Bloomington</h3>
-          </div>
-          <p class="card-meta">📍 Bloomington, IN &nbsp;·&nbsp; Aug 2023 – May 2025</p>
-          <p>MS in Data Science – Applied Data Science</p>
-          <p><strong>GPA:</strong> 3.8 / 4.0</p>
-          <p style="font-size:0.8rem;color:var(--muted);margin-top:0.4rem;"><strong style="color:var(--text);">Relevant Courses:</strong> Machine Learning, Computer Vision, Natural Language Processing, Applied Databases, Statistics, Scientific Visualization, Information Visualization, Data Mining, Social Media Mining, Independent Study</p>
-        </div>
-        <div class="card">
-          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;">
-            <span style="font-size:1.1rem;">🇰🇷</span>
-            <h3 style="margin:0;">Konkuk University</h3>
-          </div>
-          <p class="card-meta">📍 Seoul, South Korea &nbsp;·&nbsp; Mar 2018 – Feb 2021</p>
-          <p>Bachelor of Business Administration</p>
-          <p><strong>GPA:</strong> 3.72 / 4.5</p>
-          <p style="font-size:0.8rem;color:var(--muted);margin-top:0.4rem;"><strong style="color:var(--text);">Relevant Courses:</strong> Environmental Analysis, Marketing Research, Advertising</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="about" class="other-section alt" style="padding-bottom:3rem;">
-      <h2>Technical Skills</h2>
-      <div class="skill-map-wrap">
-        <div class="skill-map-y-label">Domain</div>
-        <div class="skill-map-inner">
-          <div class="skill-map-grid">
-            <!-- Row: Programming -->
-            <div class="skill-map-row-label">Programming</div>
-            <div class="skill-map-row" style="--row-hue:150;">
-              <div class="skill-bubble" style="--prof:0.55;">HTML/CSS</div>
-              <div class="skill-bubble" style="--prof:0.7;">MATLAB</div>
-              <div class="skill-bubble" style="--prof:0.75;">R</div>
-              <div class="skill-bubble" style="--prof:0.8;">SQL</div>
-              <div class="skill-bubble" style="--prof:0.95;font-weight:700;">Python</div>
-            </div>
-            <!-- Row: AI / ML / DL -->
-            <div class="skill-map-row-label">AI · ML · DL</div>
-            <div class="skill-map-row" style="--row-hue:200;">
-              <div class="skill-bubble" style="--prof:0.6;">GenAI</div>
-              <div class="skill-bubble" style="--prof:0.72;">TensorFlow</div>
-              <div class="skill-bubble" style="--prof:0.78;">NLP · LLMs</div>
-              <div class="skill-bubble" style="--prof:0.85;">Scikit-learn</div>
-              <div class="skill-bubble" style="--prof:0.92;font-weight:700;">PyTorch · CV</div>
-            </div>
-            <!-- Row: Data -->
-            <div class="skill-map-row-label">Data</div>
-            <div class="skill-map-row" style="--row-hue:170;">
-              <div class="skill-bubble" style="--prof:0.55;">Cassandra</div>
-              <div class="skill-bubble" style="--prof:0.62;">Neo4j</div>
-              <div class="skill-bubble" style="--prof:0.7;">Snowflake</div>
-              <div class="skill-bubble" style="--prof:0.78;">MongoDB</div>
-              <div class="skill-bubble" style="--prof:0.88;font-weight:700;">NumPy · Pandas</div>
-            </div>
-            <!-- Row: Visualization -->
-            <div class="skill-map-row-label">Visualization</div>
-            <div class="skill-map-row" style="--row-hue:130;">
-              <div class="skill-bubble" style="--prof:0.6;">Gephi</div>
-              <div class="skill-bubble" style="--prof:0.68;">ParaView</div>
-              <div class="skill-bubble" style="--prof:0.75;">Power BI</div>
-              <div class="skill-bubble" style="--prof:0.82;">Tableau</div>
-              <div class="skill-bubble" style="--prof:0.9;font-weight:700;">Matplotlib · Seaborn</div>
-            </div>
-            <!-- Row: Tools -->
-            <div class="skill-map-row-label">Tools</div>
-            <div class="skill-map-row" style="--row-hue:190;">
-              <div class="skill-bubble" style="--prof:0.6;">AWS · GCP</div>
-              <div class="skill-bubble" style="--prof:0.7;">Docker</div>
-              <div class="skill-bubble" style="--prof:0.78;">Jupyter</div>
-              <div class="skill-bubble" style="--prof:0.85;">Git</div>
-              <div class="skill-bubble" style="--prof:0.9;font-weight:700;">VS Code</div>
-            </div>
-          </div>
-          <!-- X-axis -->
-          <div class="skill-map-x-axis">
-            <span>Familiar</span><span>Proficient</span><span>Expert</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="other-section">
-      <h2>About Me</h2>
-      <div class="about-layout">
-        <div class="about-text">
-          <p>Research Data Scientist at the Cognitive Development Lab, Indiana University. MS Data Science graduate specializing in Machine Learning and Computer Vision at the Luddy School of Informatics, Computing, and Engineering.</p>
-          <p style="margin-top:0.75rem;">My path started with Business Administration. A marketing internship in South Korea sparked my curiosity in AI and data-driven decisions, leading me to pursue a Master's in Data Science — focusing on Machine Learning, Computer Vision, NLP, and Scientific Visualization. I'm passionate about building AI systems that bridge research and real-world impact.</p>
-        </div>
-        <div class="about-photo-wrap">
-          <img src="assets/profile2.jpeg" alt="Minju Kim" class="about-photo"/>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="other-section">
-      <h2>Get In Touch</h2>
-      <p style="color:var(--muted);font-size:0.92rem;">Always open to connecting about data science, research, and AI.</p>
-      <div class="contact-grid">
-        <button class="contact-card" onclick="document.getElementById('email-modal').classList.add('open')" style="text-align:left;width:100%;cursor:pointer;">
-          <div class="contact-card-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          </div>
-          <div class="contact-card-info">
-            <span class="contact-card-label">Email</span>
-            <span class="contact-card-value">minjukim023@gmail.com</span>
-          </div>
-        </button>
-        <a href="https://www.linkedin.com/in/minjukim023/" target="_blank" class="contact-card">
-          <div class="contact-card-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </div>
-          <div class="contact-card-info">
-            <span class="contact-card-label">LinkedIn</span>
-            <span class="contact-card-value">in/minjukim023</span>
-          </div>
-        </a>
-        <a href="https://github.com/minjukim023" target="_blank" class="contact-card">
-          <div class="contact-card-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          </div>
-          <div class="contact-card-info">
-            <span class="contact-card-label">GitHub</span>
-            <span class="contact-card-value">github.com/minjukim023</span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <footer class="site-footer"><p>&copy; <span id="year"></span> Minju Kim. All Rights Reserved.</p></footer>
-  </div>
-
-  <!-- EMAIL MODAL -->
-  <div class="modal-overlay" id="email-modal" onclick="if(event.target===this)this.classList.remove('open')">
-    <div class="modal">
-      <button class="modal-close" onclick="document.getElementById('email-modal').classList.remove('open')" aria-label="Close">✕</button>
-      <h3>Send a Message</h3>
-      <p class="modal-sub">I'll get back to you as soon as possible.</p>
-      <div class="form-group">
-        <label for="msg-name">Your Name</label>
-        <input type="text" id="msg-name" placeholder="Jane Doe"/>
-      </div>
-      <div class="form-group">
-        <label for="msg-subject">Subject</label>
-        <input type="text" id="msg-subject" placeholder="Opportunity / Collaboration / Hello"/>
-      </div>
-      <div class="form-group">
-        <label for="msg-body">Message</label>
-        <textarea id="msg-body" rows="5" placeholder="Write your message here..."></textarea>
-      </div>
-      <div class="modal-actions">
-        <button class="btn btn-g" onclick="document.getElementById('email-modal').classList.remove('open')">Cancel</button>
-        <button class="btn btn-p" onclick="sendEmail()">Send Email</button>
-      </div>
-    </div>
-  </div>
+    <footer><p>&copy; <span id="year"></span> Minju Kim</p></footer>
+  </main>
 
   <script>
-    function sendEmail() {
-      const name = document.getElementById('msg-name').value.trim();
-      const subject = document.getElementById('msg-subject').value.trim();
-      const body = document.getElementById('msg-body').value.trim();
-      if (!body) { alert('Please write a message.'); return; }
-      const fullSubject = subject || 'Message from Portfolio';
-      const fullBody = name ? `Hi Minju,\n\n${body}\n\n— ${name}` : body;
-      window.location.href = `mailto:minjukim023@gmail.com?subject=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(fullBody)}`;
-      document.getElementById('email-modal').classList.remove('open');
-    }
     document.getElementById("year").textContent = new Date().getFullYear();
     (function() {
       const root = document.documentElement, toggle = document.getElementById("theme-toggle");
-      function apply(t) { root.setAttribute("data-theme", t); toggle.textContent = t === "dark" ? "🌙" : "☀️"; }
+      function apply(t) { root.setAttribute("data-theme", t); toggle.textContent = t === "dark" ? "Light mode" : "Dark mode"; }
       const stored = localStorage.getItem("theme");
-      apply(stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+      apply(stored || "light");
       toggle.addEventListener("click", () => {
         const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
         localStorage.setItem("theme", next); apply(next);
       });
+    })();
+    // Highlight the section currently on screen in the left menu
+    (function() {
+      const links = [...document.querySelectorAll(".rail-nav a")];
+      const sections = links.map(a => document.querySelector(a.getAttribute("href")));
+      function update() {
+        let current = 0;
+        sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= window.innerHeight * 0.3) current = i; });
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) current = sections.length - 1;
+        links.forEach((a, i) => a.classList.toggle("active", i === current));
+      }
+      window.addEventListener("scroll", update, { passive: true });
+      update();
     })();
   </script>
 </body>
