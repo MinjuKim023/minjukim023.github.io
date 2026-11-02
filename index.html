@@ -68,18 +68,18 @@
     .about-tagline { font-size: 1.2rem; font-weight: 600; color: var(--accent); margin: 0.35rem 0 0.9rem; }
     .about-photo { width: 220px; height: 220px; object-fit: cover; border-radius: 50%; flex-shrink: 0; display: block; }
     .links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.1rem; }
-    .btn { font-size: 0.875rem; font-weight: 500; padding: 0.35rem 0.85rem; border: 1px solid var(--border); border-radius: 999px; color: var(--text); transition: transform 0.12s, border-color 0.12s; }
-    .btn:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; transform: translateY(-1px); }
-    .btn-p { background: var(--accent); border-color: var(--accent); color: var(--bg); }
-    .btn-p:hover { color: var(--bg); }
-
-    /* My path */
-    .path { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 2rem; }
-    .path li { border-top: 3px solid var(--accent); padding-top: 0.5rem; font-size: 0.85rem; }
-    .path li:nth-child(2) { border-color: var(--warm); }
+    .icon-link { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 50%; color: var(--text); transition: transform 0.12s, border-color 0.12s; }
+    .icon-link:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .icon-link.linkedin { color: #0a66c2; }
+    html[data-theme="dark"] .icon-link.linkedin { color: #70b5f9; }
     .about-text p + p { margin-top: 0.7rem; }
-    .path b { display: block; font-size: 0.9rem; }
-    .path span { color: var(--muted); }
+
+    /* Education */
+    .edu { list-style: none; margin-top: 2rem; }
+    .edu-title { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem; }
+    .edu li { display: grid; grid-template-columns: 10.5rem 1fr; gap: 0.25rem 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+    .edu li:last-child { border-bottom: none; }
+    .edu time { font-size: 0.875rem; color: var(--muted); padding-top: 0.08rem; }
 
     /* News */
     .news { list-style: none; }
@@ -138,7 +138,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .btn, .card, .proj { transition: none; }
+      .icon-link, .card, .proj { transition: none; }
     }
 
     /* Responsive: the menu moves to a top bar on small screens */
@@ -160,7 +160,8 @@
       main { margin-left: 0; padding: 1.75rem 1rem 1.5rem; }
       .about { flex-direction: column-reverse; gap: 1.25rem; }
       .about-photo { width: 150px; height: 150px; }
-      .path, .stats { grid-template-columns: repeat(2, 1fr); }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .edu li { grid-template-columns: 1fr; }
       .cards { grid-template-columns: 1fr; }
       .proj-grid { grid-template-columns: 1fr; }
       .proj img { height: 160px; }
@@ -205,19 +206,33 @@
             <p>In my first-author project, I measure visual clutter across about 500,000 head-camera frames from 40 infants, work I presented as an oral talk at VSS 2026. I also collaborate with a multi-institution team on memory mechanisms in spiking neural networks, with an article in press at <em>IEEE Computer</em>.</p>
             <p>I came to data science from business administration, and I'm now applying to PhD programs.</p>
             <div class="links">
-              <a href="#papers" class="btn btn-p">Papers &amp; Talks</a>
-              <a href="https://drive.google.com/file/d/1I46Orb2nMzGINgb31lgrYx2MhkHUhdre/view?usp=sharing" class="btn" target="_blank" rel="noopener">Resume</a>
-              <a href="https://github.com/minjukim023" class="btn" target="_blank" rel="noopener">GitHub</a>
-              <a href="https://www.linkedin.com/in/minjukim023/" class="btn" target="_blank" rel="noopener">LinkedIn</a>
-              <a href="mailto:minjukim023@gmail.com" class="btn">Email</a>
+              <a href="https://drive.google.com/file/d/1I46Orb2nMzGINgb31lgrYx2MhkHUhdre/view?usp=sharing" class="icon-link" target="_blank" rel="noopener" aria-label="Resume" title="Resume"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></a>
+              <a href="https://github.com/minjukim023" class="icon-link" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></a>
+              <a href="https://www.linkedin.com/in/minjukim023/" class="icon-link linkedin" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="mailto:minjukim023@gmail.com" class="icon-link" aria-label="Email" title="Email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
             </div>
           </div>
           <img src="assets/profile1.jpeg" alt="Portrait of Minju Kim" class="about-photo"/>
         </div>
-        <ol class="path" aria-label="Education">
-          <li><b>M.S. in Data Science</b><span>Indiana University Bloomington, 2023–25</span></li>
-          <li><b>B.B.A. in Business Administration</b><span>Konkuk University, Seoul, 2018–21</span></li>
-        </ol>
+        <ul class="edu" aria-label="Education">
+          <li class="edu-title">Education</li>
+          <li>
+            <time>Aug. 2023 – May 2025</time>
+            <div>
+              <h3>M.S. in Data Science (Applied Data Science)</h3>
+              <p>Indiana University Bloomington, Luddy School of Informatics, Computing, and Engineering</p>
+              <p class="meta">Bloomington, IN · GPA 3.8/4.0</p>
+            </div>
+          </li>
+          <li>
+            <time>Mar. 2018 – Feb. 2021</time>
+            <div>
+              <h3>B.B.A. in Business Administration</h3>
+              <p>Konkuk University</p>
+              <p class="meta">Seoul, South Korea · GPA 3.72/4.5</p>
+            </div>
+          </li>
+        </ul>
       </section>
 
       <!-- NEWS -->
