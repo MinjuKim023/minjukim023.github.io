@@ -12,26 +12,28 @@
     gtag('config', 'G-DEW9WZ7MZG');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="description" content="Minju Kim is a Research Data Scientist at the Cognitive Development Lab, Indiana University, working on computer vision and infants' visual experience."/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <meta name="description" content="Minju Kim is a Research Data Scientist at the Cognitive Development Lab, Indiana University, using computer vision to study what infants see."/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --bg: #ffffff; --text: #1a1f27; --muted: #5f6875;
-      --accent: #17697a; --border: #e3e6ea; --soft: #f5f6f8;
+      --accent: #17697a; --warm: #c8553d; --gold: #a97800;
+      --tint: #e8f4f6; --tint-warm: #fcefeb; --tint-gold: #fbf4dd;
+      --border: #e3e6ea; --soft: #f6f7f9;
       --rail: 176px;
     }
     html[data-theme="dark"] {
       --bg: #12161c; --text: #e6e8eb; --muted: #a0a8b3;
-      --accent: #5cc3d6; --border: #2a3039; --soft: #1b2027;
+      --accent: #5cc3d6; --warm: #f08b73; --gold: #e0b84c;
+      --tint: #17303a; --tint-warm: #3a2420; --tint-gold: #352c14;
+      --border: #2a3039; --soft: #1b2027;
       color-scheme: dark;
     }
     *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; scroll-padding-top: 1.5rem; }
-    body { font-family: "Inter", system-ui, sans-serif; font-size: 16px; background: var(--bg); color: var(--text); line-height: 1.6; }
+    body { font-family: "Inter", system-ui, sans-serif; font-size: 16px; background: var(--bg); color: var(--text); line-height: 1.55; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    ul { padding-left: 1.1rem; }
-    li { margin-top: 0.3rem; }
 
     /* === LEFT MENU === */
     .rail {
@@ -53,60 +55,91 @@
 
     /* === MAIN CONTENT === */
     main { margin-left: var(--rail); padding: 3rem 2.5rem 2rem; }
-    .wrap { max-width: 800px; margin: 0 auto; }
-    section { padding-bottom: 2.5rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--border); }
-    section:last-of-type { border-bottom: none; margin-bottom: 0; }
-    h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 1.1rem; }
-    h3 { font-size: 1rem; font-weight: 600; }
-    .subhead { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 1.6rem 0 0.6rem; }
-    .subhead:first-of-type { margin-top: 0; }
+    .wrap { max-width: 840px; margin: 0 auto; }
+    section { margin-bottom: 3.25rem; }
+    h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; }
+    h3 { font-size: 1rem; font-weight: 600; line-height: 1.35; }
     .meta { font-size: 0.875rem; color: var(--muted); }
 
     /* About */
     .about { display: flex; align-items: flex-start; gap: 2.25rem; }
     .about-text { flex: 1; min-width: 0; }
-    .about h1 { font-size: 2rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
-    .about-role { color: var(--muted); margin: 0.25rem 0 1rem; }
-    .about-text p + p { margin-top: 0.75rem; }
-    .about-photo { width: 230px; height: 230px; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; }
-    .links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
-    .btn { font-size: 0.875rem; font-weight: 500; padding: 0.35rem 0.85rem; border: 1px solid var(--border); border-radius: 6px; color: var(--text); }
-    .btn:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+    .about h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.015em; }
+    .about-tagline { font-size: 1.2rem; font-weight: 600; color: var(--accent); margin: 0.35rem 0 0.9rem; }
+    .about-photo { width: 220px; height: 220px; object-fit: cover; border-radius: 50%; flex-shrink: 0; display: block; }
+    .links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.1rem; }
+    .btn { font-size: 0.875rem; font-weight: 500; padding: 0.35rem 0.85rem; border: 1px solid var(--border); border-radius: 999px; color: var(--text); transition: transform 0.12s, border-color 0.12s; }
+    .btn:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; transform: translateY(-1px); }
     .btn-p { background: var(--accent); border-color: var(--accent); color: var(--bg); }
-    .btn-p:hover { color: var(--bg); opacity: 0.88; }
+    .btn-p:hover { color: var(--bg); }
 
-    /* Dated rows: education, awards, service */
-    .row { display: grid; grid-template-columns: 10.5rem 1fr; gap: 0.25rem 1rem; margin-bottom: 1.1rem; }
-    .row:last-child { margin-bottom: 0; }
-    .row-date { font-size: 0.875rem; color: var(--muted); padding-top: 0.1rem; }
-    .row p + p { margin-top: 0.1rem; }
+    /* My path */
+    .path { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-top: 2rem; }
+    .path li { border-top: 3px solid var(--accent); padding-top: 0.5rem; font-size: 0.85rem; }
+    .path li:nth-child(1) { border-color: var(--gold); }
+    .path li:nth-child(2) { border-color: var(--warm); }
+    .path b { display: block; font-size: 0.9rem; }
+    .path span { color: var(--muted); }
+
+    /* News */
+    .news { list-style: none; }
+    .news li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    .news li:last-child { border-bottom: none; }
+    .news time { font-size: 0.85rem; font-weight: 600; color: var(--warm); padding-top: 0.08rem; }
 
     /* Research */
-    .project { margin-top: 1rem; }
-    .project ul, .row ul { font-size: 0.95rem; }
+    .feature { background: var(--soft); border-radius: 12px; padding: 1.4rem; margin-bottom: 1rem; }
+    .feature h3 { font-size: 1.2rem; }
+    .feature > p { margin-top: 0.3rem; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin: 1.1rem 0; }
+    .stats b { display: block; font-size: 1.45rem; font-weight: 800; color: var(--accent); line-height: 1.2; }
+    .stats span { font-size: 0.8rem; color: var(--muted); }
+    #clutter { width: 100%; aspect-ratio: 800 / 240; display: block; border-radius: 8px; background: #fbfaf6; }
+    .slider-row { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.7rem; font-size: 0.8rem; color: var(--muted); }
+    .slider-row input { flex: 1; min-width: 0; accent-color: var(--warm); cursor: grab; }
+    .caption { font-size: 0.8rem; color: var(--muted); margin-top: 0.45rem; }
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .card { border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem; transition: transform 0.15s, border-color 0.15s; }
+    .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .card p { font-size: 0.92rem; margin-top: 0.3rem; }
 
-    /* Publications and presentations */
-    .pub { margin-bottom: 0.9rem; font-size: 0.95rem; }
-    .pub:last-child { margin-bottom: 0; }
-    .pub-title { font-weight: 600; }
-    .pub-note { color: var(--muted); }
-    .photos { display: flex; gap: 0.6rem; margin-top: 0.7rem; }
-    .photos img { flex: 1; min-width: 0; width: 50%; height: 170px; object-fit: cover; border-radius: 6px; display: block; }
+    /* Tags */
+    .tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.03em; padding: 0.1rem 0.5rem; border-radius: 999px; background: var(--tint); color: var(--accent); margin-bottom: 0.3rem; }
+    .tag.warm { background: var(--tint-warm); color: var(--warm); }
+    .tag.gold { background: var(--tint-gold); color: var(--gold); }
+
+    /* Papers and talks */
+    .pub { padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+    .pub:last-of-type { border-bottom: none; }
+    .pub h3 { font-size: 0.98rem; }
+    .pub p { font-size: 0.875rem; color: var(--muted); }
+    .photos { display: flex; gap: 0.6rem; margin-top: 0.6rem; }
+    .photos img { flex: 1; min-width: 0; width: 50%; height: 170px; object-fit: cover; border-radius: 8px; display: block; }
 
     /* Projects */
-    .proj { display: grid; grid-template-columns: 150px 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
-    .proj:last-child { margin-bottom: 0; }
-    .proj img { width: 150px; height: 100px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border); display: block; }
-    .proj p { font-size: 0.95rem; }
-    .proj-links { font-size: 0.875rem; margin-top: 0.2rem; }
-    .proj-links a + a::before { content: "·"; color: var(--muted); display: inline-block; margin-right: 0.4rem; }
+    .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .proj { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: transform 0.15s, border-color 0.15s; }
+    .proj:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .proj img { width: 100%; height: 115px; object-fit: cover; display: block; border-bottom: 1px solid var(--border); }
+    .proj div { padding: 0.75rem 0.85rem 0.85rem; }
+    .proj h3 { font-size: 0.93rem; }
+    .proj p { font-size: 0.85rem; color: var(--muted); margin-top: 0.2rem; }
+    .proj .proj-links { font-size: 0.85rem; margin-top: 0.35rem; }
+    .proj-links a + a { margin-left: 0.6rem; }
 
-    /* Skills */
-    .skill { display: grid; grid-template-columns: 10.5rem 1fr; gap: 0.25rem 1rem; margin-bottom: 0.75rem; font-size: 0.95rem; }
-    .skill:last-child { margin-bottom: 0; }
-    .skill strong { font-weight: 600; font-size: 0.875rem; }
+    /* Teaching, honors and service */
+    .list { list-style: none; }
+    .list li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.75rem; padding: 0.4rem 0; font-size: 0.95rem; }
+    .list time { font-size: 0.85rem; color: var(--muted); padding-top: 0.08rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .chips span { font-size: 0.85rem; padding: 0.2rem 0.65rem; border-radius: 999px; background: var(--soft); }
 
-    footer { max-width: 800px; margin: 0 auto; padding-top: 1rem; font-size: 0.8rem; color: var(--muted); }
+    footer { max-width: 840px; margin: 0 auto; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--muted); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn, .card, .proj { transition: none; }
+    }
 
     /* Responsive: the menu moves to a top bar on small screens */
     @media (max-width: 760px) {
@@ -126,11 +159,17 @@
       .rail-nav a { white-space: nowrap; }
       main { margin-left: 0; padding: 1.75rem 1rem 1.5rem; }
       .about { flex-direction: column-reverse; gap: 1.25rem; }
-      .about-photo { width: 170px; height: 170px; }
-      .row, .skill { grid-template-columns: 1fr; }
-      .proj { grid-template-columns: 1fr; gap: 0.6rem; }
-      .proj img { width: 100%; height: 170px; }
+      .about-photo { width: 150px; height: 150px; }
+      .path, .stats { grid-template-columns: repeat(2, 1fr); }
+      .cards { grid-template-columns: 1fr; }
+      .proj-grid { grid-template-columns: 1fr; }
+      .proj img { height: 160px; }
       .photos img { height: 120px; }
+      .feature { padding: 1rem; }
+      .news li, .list li { grid-template-columns: 5.25rem 1fr; }
+    }
+    @media (min-width: 761px) and (max-width: 1040px) {
+      .proj-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -140,15 +179,14 @@
     <a href="#about" class="rail-name">Minju Kim</a>
     <nav class="rail-nav" aria-label="Sections">
       <a href="#about">About</a>
-      <a href="#education">Education</a>
+      <a href="#news">News</a>
       <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#presentations">Presentations</a>
+      <a href="#papers">Papers &amp; Talks</a>
+      <a href="#projects">Projects</a>
       <a href="#honors">Honors</a>
       <a href="#teaching">Teaching</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
       <a href="#service">Service</a>
+      <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
     <button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button>
@@ -162,11 +200,10 @@
         <div class="about">
           <div class="about-text">
             <h1>Minju Kim</h1>
-            <p class="about-role">Research Data Scientist, Cognitive Development Lab, Indiana University Bloomington</p>
-            <p>I use computer vision to study what infants actually see. Working with Linda B. Smith, I analyze large-scale egocentric video from head-mounted cameras to measure how the visual complexity of early experience changes with age.</p>
-            <p>I also collaborate on memory mechanisms in spiking neural networks for neuromorphic computing. I hold an M.S. in Data Science from Indiana University and a B.B.A. from Konkuk University, and I am applying to PhD programs.</p>
+            <p class="about-tagline">I use computer vision to study what babies see.</p>
+            <p>I'm a Research Data Scientist in <a href="https://psych.indiana.edu/directory/faculty/smith-linda.html" target="_blank" rel="noopener">Linda B. Smith</a>'s Cognitive Development Lab at Indiana University, where I analyze video from head-mounted cameras worn by infants. I'm applying to PhD programs.</p>
             <div class="links">
-              <a href="#publications" class="btn btn-p">Publications</a>
+              <a href="#papers" class="btn btn-p">Papers &amp; Talks</a>
               <a href="https://drive.google.com/file/d/1I46Orb2nMzGINgb31lgrYx2MhkHUhdre/view?usp=sharing" class="btn" target="_blank" rel="noopener">Resume</a>
               <a href="https://github.com/minjukim023" class="btn" target="_blank" rel="noopener">GitHub</a>
               <a href="https://www.linkedin.com/in/minjukim023/" class="btn" target="_blank" rel="noopener">LinkedIn</a>
@@ -175,272 +212,206 @@
           </div>
           <img src="assets/profile1.jpeg" alt="Portrait of Minju Kim" class="about-photo"/>
         </div>
+        <ol class="path" aria-label="Education">
+          <li><b>Anyang, Korea</b><span>Sungkyul University, 2016–18</span></li>
+          <li><b>Seoul, Korea</b><span>B.B.A., Konkuk University, 2018–21</span></li>
+          <li><b>Nürnberg, Germany</b><span>Exchange semester, TH Nürnberg, 2019</span></li>
+          <li><b>Bloomington, IN</b><span>M.S. Data Science, Indiana University, 2023–25</span></li>
+        </ol>
       </section>
 
-      <!-- EDUCATION -->
-      <section id="education">
-        <h2>Education</h2>
-        <div class="row">
-          <p class="row-date">Aug. 2023 – May 2025</p>
-          <div>
-            <h3>M.S. in Data Science (Applied Data Science)</h3>
-            <p>Luddy School of Informatics, Computing, and Engineering, Indiana University, Bloomington, IN</p>
-            <p class="meta">GPA: 3.8/4.0</p>
-            <p class="meta">Relevant courses: Machine Learning, Computer Vision, Natural Language Processing, Applied Databases, Statistics, Scientific Visualization, Information Visualization, Data Mining, Social Media Mining, Independent Study</p>
-          </div>
-        </div>
-        <div class="row">
-          <p class="row-date">Mar. 2018 – Feb. 2021</p>
-          <div>
-            <h3>B.B.A. in Business Administration</h3>
-            <p>Konkuk University, Seoul, South Korea</p>
-            <p class="meta">GPA: 3.72/4.5</p>
-          </div>
-        </div>
-        <div class="row">
-          <p class="row-date">Mar. 2019 – Aug. 2019</p>
-          <div>
-            <h3>Exchange Student (International Business)</h3>
-            <p>Technische Hochschule Nürnberg Georg Simon Ohm, Nürnberg, Germany</p>
-          </div>
-        </div>
-        <div class="row">
-          <p class="row-date">Mar. 2016 – Feb. 2018</p>
-          <div>
-            <h3>Undergraduate Studies (East Asian Studies &amp; Logistics)</h3>
-            <p>Sungkyul University, Anyang, South Korea</p>
-            <p class="meta">GPA: 4.41/4.5 (72 credits completed). Transferred to Konkuk University.</p>
-          </div>
-        </div>
+      <!-- NEWS -->
+      <section id="news">
+        <h2>News</h2>
+        <ul class="news">
+          <li><time>Dec 2026</time><p>Poster accepted at <b>WiML @ NeurIPS 2026</b>, with a WiML Travel Grant.</p></li>
+          <li><time>2026</time><p>Reviewing for the NeurIPS 2026 Workshop on Continual World Models.</p></li>
+          <li><time>May 2026</time><p>Gave a talk on infants' visual clutter at <b>VSS 2026</b> and received the Elsevier/Vision Research Travel Award.</p></li>
+          <li><time>Spring 2026</time><p>Co-advised a student team building an infant hand-detection pipeline.</p></li>
+          <li><time>2025</time><p>Won second place at the Luddy Hackathon with EvacSim.</p></li>
+        </ul>
       </section>
 
       <!-- RESEARCH -->
       <section id="research">
-        <h2>Research Experience</h2>
-        <div class="row">
-          <p class="row-date">2024 – Present</p>
-          <div>
-            <h3>Cognitive Development Lab, Indiana University Bloomington</h3>
-            <p>PI: Linda B. Smith</p>
-            <p class="meta">Research Data Scientist (May 2025 – Present)</p>
-            <p class="meta">Research Data Analyst, Part-time (Aug. 2024 – May 2025)</p>
-            <p class="meta">Faculty Assistance in Data Science (FADS) Fellowship (Summer 2024)</p>
-            <div class="project">
-              <h3>Multi-level Visual Clutter in Infants' Egocentric Input (first-author)</h3>
-              <ul>
-                <li>Built a pipeline to quantify visual clutter across ~500,000 head-camera frames from 40 infants (1–26 months) at three levels of visual complexity: edge density (low-level), Feature Congestion (mid-level; Rosenholtz et al., 2007), and SAM2-based segment counts as an object-level proxy for proto-objects.</li>
-                <li>Found that infants' visual input is strongly biased toward low clutter, that this bias weakens gradually with age, and that clutter is multidimensional, with edge density nearly unrelated to object-level segment count.</li>
-                <li>Presented as an oral talk at VSS 2026 (Elsevier/Vision Research Travel Award); first-author manuscript in preparation.</li>
-              </ul>
-            </div>
-            <div class="project">
-              <h3>Infant Visual Statistics Across U.S. and Indian Communities</h3>
-              <ul>
-                <li>Analyzed natural image statistics of infants' egocentric visual input across U.S. and Indian communities; presented first-author poster at the Midwest Computer Vision Workshop (2024).</li>
-                <li>Contributed to a manuscript led by Philip McAdams on developmental changes in the edge statistics of everyday infant visual input (under review, Communications Psychology).</li>
-              </ul>
-            </div>
+        <h2>Research</h2>
+        <div class="feature">
+          <span class="tag warm">First-author project</span>
+          <h3>Is a baby's world cluttered? Mostly, no.</h3>
+          <p>Infants' views lean strongly toward low clutter, and that bias fades gradually as they grow.</p>
+          <div class="stats">
+            <div><b>~500K</b><span>head-camera frames</span></div>
+            <div><b>40</b><span>infants</span></div>
+            <div><b>1–26</b><span>months old</span></div>
+            <div><b>3</b><span>levels of clutter measured</span></div>
           </div>
-        </div>
-        <div class="row">
-          <p class="row-date">2025 – Present</p>
-          <div>
-            <h3>Cross-Modal Neuromorphic Computing Collaboration</h3>
-            <p>Multi-institution research collaboration</p>
-            <ul>
-              <li>Ran experiments comparing memory mechanisms (e.g., Hopfield networks, hierarchical gating) in spiking neural networks across visual (N-MNIST) and auditory (SHD) neuromorphic data in a multi-institution research team.</li>
-              <li>Contributed to manuscript writing, proofreading, and architecture figures for an IEEE Computer article (in press) and a WiML @ NeurIPS 2026 poster.</li>
-            </ul>
+          <canvas id="clutter" width="800" height="240" role="img" aria-label="Toy scene of colored shapes that gets busier as the slider moves"></canvas>
+          <div class="slider-row">
+            <label for="clutter-slider">Calm</label>
+            <input id="clutter-slider" type="range" min="3" max="220" value="14" aria-label="Amount of clutter"/>
+            <span>Cluttered</span>
           </div>
+          <p class="caption">Drag to add clutter. This is a toy illustration, not lab data.</p>
         </div>
-        <h3 class="subhead">Other Experience</h3>
-        <div class="row">
-          <p class="row-date">May – Jun. 2023</p>
-          <div>
-            <h3>Linguistic Data Annotator, Apple Siri Project</h3>
-            <p>BeyondTech, Seoul, South Korea</p>
-            <ul>
-              <li>Evaluated and annotated 370+ language model training samples daily.</li>
-              <li>Designed culturally nuanced Korean dialogues to improve AI conversational quality.</li>
-            </ul>
+        <div class="cards">
+          <div class="card">
+            <span class="tag">Infant vision</span>
+            <h3>Do babies' visual worlds differ across communities?</h3>
+            <p>Comparing image statistics from infants' head cameras in the U.S. and India.</p>
+            <p class="meta"><a href="https://drive.google.com/file/d/1zU25AT8OWRiKEsFhsdlBtwIfIKDT_RSm/view" target="_blank" rel="noopener">See the poster</a></p>
+          </div>
+          <div class="card">
+            <span class="tag gold">Neuromorphic computing</span>
+            <h3>How should a spiking network remember?</h3>
+            <p>Testing memory mechanisms across vision and hearing data with a multi-institution team.</p>
+            <p class="meta"><a href="#papers">See the paper</a></p>
           </div>
         </div>
       </section>
 
-      <!-- PUBLICATIONS -->
-      <section id="publications">
-        <h2>Publications</h2>
-        <h3 class="subhead">Accepted / In Press</h3>
-        <p class="pub">Effiong, B., Rehman, J., Roy, S., <strong>Kim, M.</strong>, Tseng, C.-Y., &amp; Nkrumah, I. (in press). <span class="pub-title">Modality-dependent memory mechanisms in cross-modal neuromorphic computing.</span> <em>IEEE Computer.</em></p>
-        <h3 class="subhead">Under Review</h3>
-        <p class="pub">McAdams, P., Colwell, A., <strong>Kim, M.</strong>, &amp; Smith, L. B. (under review). <span class="pub-title">Developmental changes in the edge statistics of everyday infant visual input across two communities.</span> Manuscript submitted to <em>Communications Psychology.</em></p>
-        <h3 class="subhead">In Preparation</h3>
-        <p class="pub"><strong>Kim, M.</strong>, McAdams, P., Colwell, A., &amp; Smith, L. B. (in preparation). <span class="pub-title">The visual world of infants and toddlers is not cluttered.</span></p>
-      </section>
-
-      <!-- PRESENTATIONS -->
-      <section id="presentations">
-        <h2>Presentations</h2>
-        <h3 class="subhead">Conference Talks</h3>
+      <!-- PAPERS AND TALKS -->
+      <section id="papers">
+        <h2>Papers &amp; Talks</h2>
         <div class="pub">
-          <p><strong>Kim, M.</strong> (2026, May 17). <span class="pub-title">Developmental changes in visual clutter in infants' and toddlers' visual worlds</span> [Oral presentation]. Vision Sciences Society (VSS) Annual Meeting, St. Pete Beach, FL, United States.</p>
+          <span class="tag warm">Talk · VSS 2026</span>
+          <h3>Developmental changes in visual clutter in infants' and toddlers' visual worlds</h3>
+          <p><strong>Kim, M.</strong></p>
           <div class="photos">
             <img src="assets/present1.png" alt="Minju Kim giving a talk at VSS 2026" loading="lazy"/>
             <img src="assets/present2.jpg" alt="Minju Kim presenting at VSS 2026" loading="lazy"/>
           </div>
         </div>
-        <h3 class="subhead">Posters</h3>
-        <p class="pub">Effiong, B., <strong>Kim, M.</strong>, Thasin, M., Rehman, J., Roy, S., Tan, V., &amp; Nkrumah, I. (2026, December). <span class="pub-title">Modality-adaptive memory gating with embedding replay for continual learning in spiking neural networks</span> [Poster presentation accepted]. Women in Machine Learning (WiML) Workshop, co-located with NeurIPS 2026, Atlanta, GA, United States.</p>
-        <p class="pub">McAdams, P., Colwell, A., <strong>Kim, M.</strong>, &amp; Smith, L. B. (2026, May). <span class="pub-title">Infant egocentric scene statistics are simpler than adult egocentric and canonical natural scenes</span> [Poster presentation]. Vision Sciences Society (VSS) Annual Meeting, St. Pete Beach, FL, United States.</p>
-        <p class="pub"><strong>Kim, M.</strong>, &amp; Smith, L. B. (2024, September 16–17). <span class="pub-title">Natural statistics of visual experience of infancy: US &amp; India</span> [Poster presentation]. Midwest Computer Vision Workshop, Indiana University Bloomington, Bloomington, IN, United States. <a href="https://drive.google.com/file/d/1zU25AT8OWRiKEsFhsdlBtwIfIKDT_RSm/view" target="_blank" rel="noopener">Poster</a></p>
-      </section>
-
-      <!-- HONORS -->
-      <section id="honors">
-        <h2>Honors and Awards</h2>
-        <div class="row">
-          <p class="row-date">2026</p>
-          <p><strong>Elsevier/Vision Research Travel Award</strong>, Vision Sciences Society (VSS)</p>
+        <div class="pub">
+          <span class="tag">In press · IEEE Computer</span>
+          <h3>Modality-dependent memory mechanisms in cross-modal neuromorphic computing</h3>
+          <p>Effiong, B., Rehman, J., Roy, S., <strong>Kim, M.</strong>, Tseng, C.-Y., &amp; Nkrumah, I.</p>
         </div>
-        <div class="row">
-          <p class="row-date">2025</p>
-          <p><strong>Second Place, Case 4 (Multi-Agent Systems)</strong>, 2025 Luddy Hackathon, Luddy School of Informatics, Computing, and Engineering, Indiana University Bloomington</p>
+        <div class="pub">
+          <span class="tag">Under review · Communications Psychology</span>
+          <h3>Developmental changes in the edge statistics of everyday infant visual input across two communities</h3>
+          <p>McAdams, P., Colwell, A., <strong>Kim, M.</strong>, &amp; <a href="https://psych.indiana.edu/directory/faculty/smith-linda.html" target="_blank" rel="noopener">Smith, L. B.</a></p>
         </div>
-        <div class="row">
-          <p class="row-date">2024</p>
-          <p><strong>Faculty Assistance in Data Science (FADS) Fellowship</strong>, Indiana University Bloomington. Competitively selected for a faculty-led research project.</p>
+        <div class="pub">
+          <span class="tag">In preparation</span>
+          <h3>The visual world of infants and toddlers is not cluttered</h3>
+          <p><strong>Kim, M.</strong>, McAdams, P., Colwell, A., &amp; <a href="https://psych.indiana.edu/directory/faculty/smith-linda.html" target="_blank" rel="noopener">Smith, L. B.</a></p>
         </div>
-      </section>
-
-      <!-- TEACHING -->
-      <section id="teaching">
-        <h2>Teaching and Mentoring</h2>
-        <div class="row">
-          <p class="row-date">Spring 2026</p>
-          <div>
-            <h3>Research Mentor, CSCI-B657 Computer Vision Course Project</h3>
-            <p>Luddy School of Informatics, Computing, and Engineering, Indiana University</p>
-            <ul>
-              <li>Co-advised (with Linda B. Smith) a three-student team developing an egocentric infant hand-detection and object-interaction pipeline using Cognitive Development Lab head-camera data.</li>
-              <li>Met regularly with the team to set project direction, provided lab egocentric video data, advised on pipeline design (MediaPipe-based auto-labeling, CVAT annotation correction, YOLOv8 hand detection, DINOv2 one-shot object classification), and gave feedback on the final poster.</li>
-            </ul>
-          </div>
+        <div class="pub">
+          <span class="tag gold">Poster · WiML @ NeurIPS 2026</span>
+          <h3>Modality-adaptive memory gating with embedding replay for continual learning in spiking neural networks</h3>
+          <p>Effiong, B., <strong>Kim, M.</strong>, Thasin, M., Rehman, J., Roy, S., Tan, V., &amp; Nkrumah, I.</p>
         </div>
-        <div class="row">
-          <p class="row-date">Summer 2024</p>
-          <div>
-            <h3>Associate Instructor, CSCI-C 102: Great Ideas in Computing</h3>
-            <p>Luddy School of Informatics, Computing, and Engineering, Indiana University</p>
-            <ul>
-              <li>Instructed 30+ students through hands-on programming labs covering Python, Arduino, HTML/CSS, and Java, developing foundational programming and computational thinking skills.</li>
-            </ul>
-          </div>
+        <div class="pub">
+          <span class="tag gold">Poster · VSS 2026</span>
+          <h3>Infant egocentric scene statistics are simpler than adult egocentric and canonical natural scenes</h3>
+          <p>McAdams, P., Colwell, A., <strong>Kim, M.</strong>, &amp; <a href="https://psych.indiana.edu/directory/faculty/smith-linda.html" target="_blank" rel="noopener">Smith, L. B.</a></p>
+        </div>
+        <div class="pub">
+          <span class="tag gold">Poster · Midwest Computer Vision Workshop 2024</span>
+          <h3>Natural statistics of visual experience of infancy: US &amp; India</h3>
+          <p><strong>Kim, M.</strong>, &amp; <a href="https://psych.indiana.edu/directory/faculty/smith-linda.html" target="_blank" rel="noopener">Smith, L. B.</a></p>
         </div>
       </section>
 
       <!-- PROJECTS -->
       <section id="projects">
-        <h2>Selected Projects</h2>
-        <div class="proj">
-          <img src="assets/EvacSim.png" alt="EvacSim evacuation simulation" loading="lazy"/>
-          <div>
-            <h3>EvacSim: Evacuation Simulation Using Multi-Agent Systems</h3>
-            <p>Real-time evacuation tool with 9 autonomous agents (8 drones and 1 vehicle), using Unity AI NavMesh and a React frontend with WebSocket streaming. Second place, 2025 Luddy Hackathon.</p>
-            <p class="proj-links"><a href="https://github.com/MinjuKim023/Evacuation-Simulation" target="_blank" rel="noopener">GitHub</a> <a href="https://www.youtube.com/watch?v=hO1vGT5lekk" target="_blank" rel="noopener">Demo</a></p>
+        <h2>Projects</h2>
+        <div class="proj-grid">
+          <article class="proj">
+            <img src="assets/EvacSim.png" alt="EvacSim evacuation simulation" loading="lazy"/>
+            <div>
+              <h3>EvacSim</h3>
+              <p>Drones and a vehicle coordinating a real-time evacuation. Second place, Luddy Hackathon.</p>
+              <p class="proj-links"><a href="https://github.com/MinjuKim023/Evacuation-Simulation" target="_blank" rel="noopener">GitHub</a><a href="https://www.youtube.com/watch?v=hO1vGT5lekk" target="_blank" rel="noopener">Demo</a></p>
+            </div>
+          </article>
+          <article class="proj">
+            <img src="assets/algae.jpg" alt="Microscope images of algae" loading="lazy"/>
+            <div>
+              <h3>Algae Identification</h3>
+              <p>ResNet and U-Net for 12 algae species, supporting Lake Monroe water monitoring.</p>
+              <p class="proj-links"><a href="https://github.com/MinjuKim023/Microscopic-Algae-Classification" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/MinjuKim023/Microscopic-Algae-Classification/blob/main/Algae_final%20paper.pdf" target="_blank" rel="noopener">Report</a></p>
+            </div>
+          </article>
+          <article class="proj">
+            <img src="assets/asteroid.png" alt="Visualization of an asteroid striking deep water" loading="lazy"/>
+            <div>
+              <h3>When Asteroids Strike</h3>
+              <p>Deep-water asteroid collisions visualized in ParaView.</p>
+              <p class="proj-links"><a href="https://collectome.rt.iu.edu/frontend/exhibits/6759eef728048" target="_blank" rel="noopener">Demo</a><a href="https://drive.google.com/file/d/1C46P9J9lWNxvSac9iEq4x1_S-6zsJEjS/view" target="_blank" rel="noopener">Slides</a></p>
+            </div>
+          </article>
+          <article class="proj">
+            <img src="assets/heartattack.png" alt="Heart attack risk analysis figure" loading="lazy"/>
+            <div>
+              <h3>Gender Gap in Heart Attack</h3>
+              <p>Ensemble models that explore gender-related risk differences.</p>
+              <p class="proj-links"><a href="https://github.com/MinjuKim023/Bridging-the-Gender-Gap-in-Heart-Attack" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/MinjuKim023/Bridging-the-Gender-Gap-in-Heart-Attack/blob/main/Final%20Report/final-mk159-lli4-lc51.pdf" target="_blank" rel="noopener">Report</a></p>
+            </div>
+          </article>
+          <article class="proj">
+            <img src="assets/dashboard.png" alt="Power BI dashboard" loading="lazy"/>
+            <div>
+              <h3>HRA Usage Dashboard</h3>
+              <p>A Power BI dashboard of Health Risk Assessment usage patterns.</p>
+              <p class="proj-links"><a href="https://drive.google.com/file/d/1NE9Km2rfP0q0T4n09CsXS3N6Fnq6SHWh/view" target="_blank" rel="noopener">Report</a><a href="https://drive.google.com/file/d/1Dcbzhdqx4l7pcvIKG3XoSQyjtEWKjTD7/view" target="_blank" rel="noopener">Demo</a></p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- HONORS -->
+      <section id="honors">
+        <h2>Honors &amp; Awards</h2>
+        <ul class="list">
+          <li><time>2026</time><p><b>WiML Travel Grant</b>, Women in Machine Learning (WiML) Workshop, co-located with NeurIPS 2026</p></li>
+          <li><time>2026</time><p><b>Elsevier/Vision Research Travel Award</b>, Vision Sciences Society (VSS)</p></li>
+          <li><time>2025</time><p><b>Second Place, Multi-Agent Systems</b>, Luddy Hackathon, Indiana University</p></li>
+          <li><time>2024</time><p><b>Faculty Assistance in Data Science (FADS) Fellowship</b>, Indiana University</p></li>
+        </ul>
+      </section>
+
+      <!-- TEACHING -->
+      <section id="teaching">
+        <h2>Teaching &amp; Mentoring</h2>
+        <div class="cards">
+          <div class="card">
+            <span class="tag">Spring 2026</span>
+            <h3>Research Mentor, Computer Vision (CSCI-B657)</h3>
+            <p>Co-advised three students with <a href="https://psych.indiana.edu/directory/faculty/smith-linda.html" target="_blank" rel="noopener">Linda B. Smith</a> on detecting infants' hands in head-camera video.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Summer 2024</span>
+            <h3>Associate Instructor, Great Ideas in Computing (CSCI-C 102)</h3>
+            <p>Taught 30+ students Python, Arduino, HTML/CSS, and Java through hands-on labs.</p>
           </div>
         </div>
-        <div class="proj">
-          <img src="assets/algae.jpg" alt="Microscope image of algae" loading="lazy"/>
-          <div>
-            <h3>Algae Identification Towards Automated Classification</h3>
-            <p>Applied ResNet and U-Net to identify 12 algae species for the City of Bloomington, supporting Lake Monroe water quality monitoring.</p>
-            <p class="proj-links"><a href="https://github.com/MinjuKim023/Microscopic-Algae-Classification" target="_blank" rel="noopener">GitHub</a> <a href="https://github.com/MinjuKim023/Microscopic-Algae-Classification/blob/main/Algae_final%20paper.pdf" target="_blank" rel="noopener">Report</a></p>
-          </div>
-        </div>
-        <div class="proj">
-          <img src="assets/heartattack.png" alt="Heart attack risk analysis figure" loading="lazy"/>
-          <div>
-            <h3>Bridging the Gender Gap in Heart Attack</h3>
-            <p>Ensemble models and feature importance for gender-related risk differences.</p>
-            <p class="proj-links"><a href="https://github.com/MinjuKim023/Bridging-the-Gender-Gap-in-Heart-Attack" target="_blank" rel="noopener">GitHub</a> <a href="https://github.com/MinjuKim023/Bridging-the-Gender-Gap-in-Heart-Attack/blob/main/Final%20Report/final-mk159-lli4-lc51.pdf" target="_blank" rel="noopener">Report</a></p>
-          </div>
-        </div>
-        <div class="proj">
-          <img src="assets/asteroid.png" alt="Visualization of an asteroid striking deep water" loading="lazy"/>
-          <div>
-            <h3>When Asteroids Strike: Deep Water Collisions</h3>
-            <p>Visualized asteroid collision scenarios with ParaView and spatial data.</p>
-            <p class="proj-links"><a href="https://collectome.rt.iu.edu/frontend/exhibits/6759eef728048" target="_blank" rel="noopener">Demo</a> <a href="https://drive.google.com/file/d/1C46P9J9lWNxvSac9iEq4x1_S-6zsJEjS/view" target="_blank" rel="noopener">Slides</a></p>
-          </div>
-        </div>
-        <div class="proj">
-          <img src="assets/baby.png" alt="Infant head-camera image" loading="lazy"/>
-          <div>
-            <h3>Natural Statistics of Infant Visual Experience</h3>
-            <p>Image statistics from infant head cameras across the U.S. and India.</p>
-            <p class="proj-links"><a href="https://drive.google.com/file/d/1zU25AT8OWRiKEsFhsdlBtwIfIKDT_RSm/view" target="_blank" rel="noopener">Poster</a></p>
-          </div>
-        </div>
-        <div class="proj">
-          <img src="assets/dashboard.png" alt="Power BI dashboard" loading="lazy"/>
-          <div>
-            <h3>Creating a Dashboard for Usage of the HRA</h3>
-            <p>Power BI dashboard for Health Risk Assessment usage patterns.</p>
-            <p class="proj-links"><a href="https://drive.google.com/file/d/1NE9Km2rfP0q0T4n09CsXS3N6Fnq6SHWh/view" target="_blank" rel="noopener">Report</a> <a href="https://drive.google.com/file/d/1Dcbzhdqx4l7pcvIKG3XoSQyjtEWKjTD7/view" target="_blank" rel="noopener">Demo</a></p>
-          </div>
-        </div>
+      </section>
+
+      <!-- SERVICE -->
+      <section id="service">
+        <h2>Service &amp; Community</h2>
+        <ul class="list">
+          <li><time>2026</time><p>Reviewer, NeurIPS 2026 Workshop on Continual World Models</p></li>
+          <li><time>2026</time><p>Judge, CEWIT Research Poster Competition, Indiana University</p></li>
+          <li><time>2026</time><p>Member, KSEA and KWiSE (Indiana Chapter)</p></li>
+          <li><time>2024</time><p>Student Volunteer, AATK Conference</p></li>
+          <li><time>2023–now</time><p>Mentee, CEWIT, Indiana University</p></li>
+        </ul>
       </section>
 
       <!-- SKILLS -->
       <section id="skills">
         <h2>Skills</h2>
-        <div class="skill"><strong>Programming &amp; Tools</strong><p>Python, R, SQL, MATLAB, HTML/CSS, Git, Docker, Jupyter, NumPy, Pandas, OpenCV, Matplotlib, Seaborn, AWS, GCP</p></div>
-        <div class="skill"><strong>Deep Learning &amp; Computer Vision</strong><p>PyTorch, TensorFlow, Scikit-learn, CNNs (ResNet, U-Net), object detection, image segmentation, image classification, transfer learning, data augmentation, feature extraction, NLP, LLMs</p></div>
-        <div class="skill"><strong>Research Methods</strong><p>Experimental design, model evaluation and benchmarking, cross-population analysis, large-scale egocentric image and video analysis, multimodal data processing, visual complexity analysis, scientific visualization (ParaView)</p></div>
-        <div class="skill"><strong>Data &amp; Visualization</strong><p>MongoDB, Snowflake, Neo4j, Cassandra, Tableau, Power BI, Gephi</p></div>
-      </section>
-
-      <!-- SERVICE -->
-      <section id="service">
-        <h2>Service and Memberships</h2>
-        <h3 class="subhead">Manuscript Reviewing</h3>
-        <div class="row">
-          <p class="row-date">2026</p>
-          <p>Reviewer, NeurIPS 2026 Workshop on Continual World Models</p>
-        </div>
-        <h3 class="subhead">Other Service and Activities</h3>
-        <div class="row">
-          <p class="row-date">2026</p>
-          <div>
-            <p>Judge, Research Poster Competition, Center of Excellence for Women &amp; Technology (CEWIT), Indiana University Bloomington</p>
-            <p class="meta">Evaluated student research posters in Health and Behavioral Sciences and Technology &amp; Computing Sciences.</p>
-          </div>
-        </div>
-        <div class="row">
-          <p class="row-date">2024</p>
-          <p>Student Volunteer, American Association of Teachers of Korean (AATK) Conference, Indiana University Bloomington</p>
-        </div>
-        <div class="row">
-          <p class="row-date">2023 – Present</p>
-          <p>Mentee, Center of Excellence for Women &amp; Technology (CEWIT), Indiana University Bloomington</p>
-        </div>
-        <h3 class="subhead">Professional Memberships</h3>
-        <div class="row">
-          <p class="row-date">2026</p>
-          <p>Korean-American Scientists and Engineers Association (KSEA)</p>
-        </div>
-        <div class="row">
-          <p class="row-date">2026</p>
-          <p>Korean Women in Science and Engineering (KWiSE), Indiana Chapter</p>
+        <div class="chips">
+          <span>Python</span><span>PyTorch</span><span>TensorFlow</span><span>OpenCV</span><span>Object detection</span><span>Image segmentation</span><span>Egocentric video analysis</span><span>Experimental design</span><span>R</span><span>SQL</span><span>MATLAB</span><span>Git</span><span>Docker</span><span>ParaView</span>
         </div>
       </section>
 
       <!-- CONTACT -->
       <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:minjukim023@gmail.com">minjukim023@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/minjukim023" target="_blank" rel="noopener">github.com/minjukim023</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/minjukim023/" target="_blank" rel="noopener">linkedin.com/in/minjukim023</a></p>
+        <h2>Say hello</h2>
+        <p>The best way to reach me is <a href="mailto:minjukim023@gmail.com">minjukim023@gmail.com</a>.</p>
       </section>
     </div>
 
@@ -471,6 +442,34 @@
       }
       window.addEventListener("scroll", update, { passive: true });
       update();
+    })();
+    // Clutter slider: draws a repeatable toy scene with more shapes as the slider moves
+    (function() {
+      const canvas = document.getElementById("clutter"), slider = document.getElementById("clutter-slider");
+      const ctx = canvas.getContext("2d");
+      const colors = ["#17697a", "#c8553d", "#e0b84c", "#7fb7a6", "#8a6fb0", "#3f6fb5", "#e58fa0"];
+      let seed = 23;
+      function rand() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+      const shapes = Array.from({ length: 220 }, () => ({
+        x: rand() * 800, y: rand() * 240, size: 10 + rand() * 42,
+        kind: Math.floor(rand() * 3), color: colors[Math.floor(rand() * colors.length)], angle: rand() * Math.PI
+      }));
+      function draw() {
+        ctx.clearRect(0, 0, 800, 240);
+        shapes.slice(0, Number(slider.value)).forEach(s => {
+          ctx.save();
+          ctx.translate(s.x, s.y); ctx.rotate(s.angle);
+          ctx.fillStyle = s.color;
+          ctx.beginPath();
+          if (s.kind === 0) ctx.arc(0, 0, s.size / 2, 0, Math.PI * 2);
+          else if (s.kind === 1) ctx.rect(-s.size / 2, -s.size / 2, s.size, s.size);
+          else { ctx.moveTo(0, -s.size / 2); ctx.lineTo(s.size / 2, s.size / 2); ctx.lineTo(-s.size / 2, s.size / 2); ctx.closePath(); }
+          ctx.fill();
+          ctx.restore();
+        });
+      }
+      slider.addEventListener("input", draw);
+      draw();
     })();
   </script>
 </body>
